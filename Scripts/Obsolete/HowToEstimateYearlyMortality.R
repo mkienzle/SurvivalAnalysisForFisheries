@@ -1,0 +1,157 @@
+# CREATION DATE     31 Oct. 2008
+# MODIFICATION DATA  3 Nov. 2008
+
+# STATUS works
+
+# AUTHOR marco.kienzle@gmail.com
+# PURPOSE compare year and cohort-specific mortality estimates affecting several cohorts
+#         using catch formatted as the typical catch at age matrix (year x age)
+
+# METHOD simulation
+# ASSUMPTION constant mortality, constant recruitment i.e. the simplest case
+#            age is assumed to start with 0-group and are integer: time-steps
+#            between age group are 1 year.
+
+# Some parameters
+max.age = 3; nb.of.cohort = 9 # be aware that nb.of.cohort / max.age >= 3
+                               # for some algorithm below to work
+age = matrix(seq(0, max.age), nrow = nb.of.cohort, ncol = max.age+1, byrow=T)
+
+# suppose there are 1000 recruits, 50% survive per year
+#vec.survival = rep(0.5, nb.of.cohort) #
+
+# suppose there are 1000 recruits, survival increase with cohort number
+#vec.survival = seq(0.2, 0.8, length = nb.of.cohort)
+
+# suppose there are 1000 recruits, survival is random
+vec.survival <- runif(nb.of.cohort, min = 0.1, max = 0.9)
+
+### Calculate the number alive at age
+# using constant recruitment
+#cohort <- data.frame(1000 * vec.survival ^ age)
+# using variable recruitment
+cohort <- runif(nb.of.cohort, min = 1e2, max = 1e4) * vec.survival ^ age
+
+# Name nicely you data with arbitrary cohort birth-date
+dimnames(cohort)[[1]] = seq( from  = 1988, by = 1, length = nb.of.cohort)
+dimnames(cohort)[[2]] = paste("age-group", seq(0,max.age), sep="")  # give age names
+
+# Re-format data into catch at age matrix
+nb.at.age = matrix(ncol = max.age + 1, nrow = nb.of.cohort)
+
+for(i in seq(1,nb.of.cohort - 1)) {
+
+  diag(nb.at.age[seq(i, nb.of.cohort),seq(1, min(nb.of.cohort - i +1, max.age + 1))]) <-
+    as.numeric(cohort[i,seq(1, min(nb.of.cohort - i +1, max.age + 1))])
+
+}
+nb.at.age[nb.of.cohort,1] = cohort[nb.of.cohort,1] # diag deals on with matrix
+
+# Get a complete dataset
+c.catch.at.age = nb.at.age[complete.cases(nb.at.age),]
+
+# Given a matrix of catch at age and their associated probability, we want
+# a function that sums them along the cohorts
+normalizing.matrix <- function(x){
+n.row <- dim(x)[1]
+n.col <- dim(x)[2]
+res <- x
+
+  # Fill the upper right corner
+  for(i in seq(1, n.col-1)){
+    diag(res[seq(1,i+1), seq(n.col-i,n.col) ]) = sum(diag(x[seq(1,i+1), seq(n.col-i,n.col) ]))
+  }
+
+  # Fill the lower left corner (note the overlap)
+  for(i in seq(1, n.row - 1)){
+    indices <- seq(i, min(i + n.col - 1, n.row))
+    diag(res[indices, seq(1, length(indices))]) <-
+  sum(diag(x[indices, seq(1, length(indices))])) 
+}
+
+return(res)
+} # End of the function
+   
+# Examples normalizing.matrix( matrix(1:8, ncol=2))
+#          normalizing.matrix( matrix(1:16, ncol=4))
+
+#### Define the log likelihood function to estimate mortality
+# assuming the mortality are constant along the cohorts
+
+llfunc.cohort.specific <- function(x) { # express as a function 
+
+# Specify matrix where mortality parameter are
+# associated with each cohort
+  M = matrix(NA, ncol = max.age + 1, nrow = dim(c.catch.at.age)[1])
+  n = dim(M)[1]; p = dim(M)[2]
+  M[1, p] = x[1]
+
+  # Checks
+  if(p>n) warning("This algorithm is not design to deal with
+cases where age group is larger than number of year, please check c.catch.at.age")
+  
+  # Fill the upper right corner
+  for(i in seq(1, p-1)){
+    diag(M[seq(1,i+1), seq(p-i,p) ]) = x[i+1]
+  }
+  # Fill the lower left corner (note the overlap)
+  for(i in seq(1, n - 1)){
+diag(M[seq(i, min(i + p - 1, n)), seq(1, length(seq(i, min(i + p - 1, n))))]) = x[p + i - 1]
+}
+# And the last cohort
+M[n,1] = x[length(x)]
+
+# Specify the age matrix
+age.mat = matrix(seq(0, max.age), nrow = dim(c.catch.at.age)[1], ncol = max.age+1, byrow=T)
+
+# Calculate the probability associated with each observation
+       prob1 = exp(-M * age.mat)
+       prob2 = exp(-M * (age.mat + 1))
+
+  #print((prob1 - prob2))
+  #print(normalizing.matrix(prob1-prob2))
+  
+# Express the likelihood
+       -sum(c.catch.at.age * log( (prob1 - prob2) / normalizing.matrix(prob1-prob2) ))
+     }
+
+#### Define the log likelihood function to estimate mortality
+# assuming mortality are constant during each years
+
+llfunc.year.specific <- function(x) { # express as a function 
+
+# Specify matrix where mortality parameter are
+# associated with each year
+   M = matrix(rep(x,each = max.age + 1), nrow = dim(c.catch.at.age)[1], ncol = max.age + 1, byrow=F)
+
+# Specify the age matrix
+age.mat = matrix(seq(0, max.age), nrow = dim(c.catch.at.age)[1], ncol = max.age+1, byrow=T)
+
+# Calculate the probability associated with each observation
+       prob1 = exp(-M * age.mat)
+       prob2 = exp(-M * (age.mat + 1))
+#print((prob1 - prob2))
+#print(normalizing.matrix(prob1-prob2))
+# Express the likelihood
+       -sum(c.catch.at.age * log( (prob1 - prob2) / normalizing.matrix(prob1-prob2)))
+     }
+
+# Determine the number of cohorts in the catch at age matrix
+# which will give you the number of parameter to estimate
+co.nb = dim(c.catch.at.age)[1] + dim(c.catch.at.age)[2] - 1
+
+# Estimate cohort-specific mortality rates
+result1 <- optim(par = rep(0.2, co.nb), fn = llfunc.cohort.specific, method = c("L-BFGS-B"),
+      lower = rep(1e-5, co.nb), upper = rep(5, co.nb), hessian = TRUE)
+
+# Estimate year-specific mortality rates
+nb.year = dim(c.catch.at.age)[1]
+result2 <- optim(par = rep(0.2, nb.year), fn = llfunc.year.specific, method = c("L-BFGS-B"),
+      lower = rep(1e-5, nb.year), upper = rep(5, nb.year), hessian = TRUE)
+
+## Print results
+print(cbind(Simulated = vec.survival, Estimated = exp(-result1$par)))
+
+
+
+

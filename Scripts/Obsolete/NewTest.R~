@@ -1,0 +1,52 @@
+####
+# Some parameters
+max.age = 3; nb.of.cohort = 9 # be aware that nb.of.cohort / max.age >= 3
+                               # for some algorithm below to work
+age = matrix(seq(0, max.age), nrow = nb.of.cohort, ncol = max.age+1, byrow=T)
+
+# suppose there are 1000 recruits, survival is random
+# vec.survival <- runif(nb.of.cohort, min = 0.1, max = 0.9)
+
+### Calculate the number alive at age
+# using constant recruitment
+#cohort <- data.frame(1000 * vec.survival ^ age)
+# using variable recruitment
+m<-0.2
+f<-0.35
+cohort <- runif(nb.of.cohort, min = 1e2, max = 1e4) * f/(m+f) * (exp(-(m+f)) ^ age - exp(-(m+f)) ^ age+1))
+
+# Name nicely you data with arbitrary cohort birth-date
+dimnames(cohort)[[1]] = seq( from  = 1988, by = 1, length = nb.of.cohort)
+dimnames(cohort)[[2]] = paste("age-group", seq(0,max.age), sep="")  # give age names
+
+# Re-format data into catch at age matrix
+nb.at.age = matrix(ncol = max.age + 1, nrow = nb.of.cohort)
+
+for(i in seq(1,nb.of.cohort - 1)) {
+
+  diag(nb.at.age[seq(i, nb.of.cohort),seq(1, min(nb.of.cohort - i +1, max.age + 1))]) <-
+    as.numeric(cohort[i,seq(1, min(nb.of.cohort - i +1, max.age + 1))])
+
+}
+nb.at.age[nb.of.cohort,1] = cohort[nb.of.cohort,1] # diag deals on with matrix
+
+# Get a complete dataset
+c.catch.at.age = nb.at.age[complete.cases(nb.at.age),]
+
+
+#
+
+lilylik <- function(F){
+M <- matrix(0.2, nrow = 6, ncol = 4)
+#F <- outer(seq(0.1, by = 0.1, length = 10), seq(0.2, by = 0.2, length=4))
+#F <- outer(rep(0.35, 10), rep(1,4))
+
+Age <- matrix(seq(0,3), nrow = 10, ncol = 4, byrow=T)
+
+prob1 <- 1 - exp(- (M+F) * Age)
+prob2 <- 1 - exp(- (M+F) * (Age+1))
+
+P <- prob2 - prob1
+print(P)
+#Catch <- 1e3 * F/(M+F) * P
+}

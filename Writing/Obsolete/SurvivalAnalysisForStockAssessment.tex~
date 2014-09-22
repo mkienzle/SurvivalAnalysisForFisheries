@@ -1,0 +1,86 @@
+One of the purposes of stock assessment is to estimate mortalities affecting fish stocks. The central mortality model used in fisheries research was proposed by Baranov \citep{quin99b} to describe the variation of the number of fish belonging to a cohort through time. This deterministic exponential model has a statistical counterpart in the form of the exponential probability distribution function \citep{cow98b}. This statistical view of the problem allows to develop maximum likelihood estimators \citep{Burnb03} of parameters of importance to stock assessment. The branch of statistics focused on survival analysis has extended and refined these methods to estimate mortality rates \citep{cox84b}. This section describe an application of survival analysis to fisheries catch at age data.
+
+%\subsection{Properties of the exponential pdf}
+% which properties inversily relate mortality rates to the average (and dispersion) of age in a cohort (CITE Keith Brander)
+
+\subsection{Abundance of individual belonging to a cohort} \input{/home/mkienzle/mystuff/Work/Theory_for_fisheries/Writing/FishingASingleCohort.tex}
+
+\subsection{Survival analysis approach to single cohort}
+
+The exponential decrease in abundance of a fish cohort is described in survival analysis \citep{cox84b} using a constant harzard function of time ($t$) and parameters $\theta$
+
+\begin{equation}
+h(t; \theta) = M + F
+\end{equation}
+
+It follows that the density function is:
+
+\begin{equation}
+f(t; \theta) = (M + F) \ e^{-(M+F)t}
+\end{equation}
+
+The survivor function gives the proportion of cohort surviving longer than $t$ \citep{kleinbaum2005survival}
+\begin{equation}
+P(T>t) = S(t; \theta) = e^{-(M+F)t}
+\end{equation}
+
+Finally, the cumulative distribution function $F(t)$ with density $f(t)$ gives the proportion of the cohort that died until time $T=t$
+\begin{equation}
+F(t) = 1 - S(t)
+\end{equation}
+
+The probability of dying between $t_{1}$ and $t_{2}$ is
+\begin{equation}
+P(E_{[t_{1}-t_{2}]}) = \int_{t_{1}}^{t_{2}} f(t; \theta) = F(t_{2}) - F(t_{1}) = S(t_{2}) - S(t_{1})
+\end{equation}
+
+Here we are using that the catch in an interval ($C_{[t_{1}-t_{2}]}$) plus the number of individual dying of natural causes ($D_{[t_{1}-t_{2}]}$) is equal to the total number of death: $C_{[t_{1}-t_{2}]} + D_{[t_{1}-t_{2}]} = E_{[t_{1}-t_{2}]}$
+%% So, survival analysis provides the tools to build a likelihood estimator of mortality rates. Let's take the same example as above, supposing that we have access to the number of individual dying in each interval. In the R script below, we implicitly assume a knowledge of likelihood for binned data \citep{cow98b}
+
+%% \verbatiminput{SimplestExample.R}
+
+%% This simplistic example above illustrates the usage of survival analysis. It suffers from several shortcomings that we will address one by one to apply survival analysis to fisheries catch at age data. In principle, survival analysis offers the tools to represent any mortality schedule and the likelihood approach provides a method to compare them and determine which is most supported by the data.\\
+
+%% First, we introduce the concept of truncated distributions to address the case where some age-groups are not samples, for example in Torres Strait lobster where age-group 2+ migrates outside the fishing grounds to Papua New Guinea to spawn.
+
+%% \verbatiminput{TruncatedDistribution.R}
+
+%% Second, total death data are not available to fisheries scientist. Instead, they are often provided with catch from a fishery. 
+
+%% \verbatiminput{SimplestExampleUsingCatch.R}
+
+%% Third, we would also to estimate natural mortality from catch at age data. This is possible if you have a measure of effort ($E$) and that it relates to fishing mortality via catchability ($q$): $F=qE$
+
+%% \verbatiminput{../Scripts/HowToEstimateMandQfromCatchData.R}
+
+%% Fourth, often gear properties interfere with the selection of fish caught.
+%% \verbatiminput{../Scripts/HowToEstimateMQandSelectivity.R}
+
+
+
+
+%Similarities between the Baranov equation (Eq.~\ref{BaranovCatchEquation}) and the density function suggested that likelihood mortality rates could be estimated by maximum likelihood using catch data.
+
+%% \subsection{Maximum likelihood with binned data}
+
+%% In fisheries, age measurements are binned into age-groups spanning 1 year according to the annual deposit of material on otoliths. These annual rings allow to identify how many period of deposition each individual survived through. According to this observations, individual fish in a sample are classified into a discrete age-group ranging from 0 to a maximum age. Assuming age is distributed according to the density function $f(t; \theta)$, the probability to belong to an age-group $i$ is
+
+%% \begin{equation}
+%% \nu_{i} = \int_{i}^{i+1} f(t; \theta) dt
+%% \end{equation}
+
+%% And the log-likelihood function by \citep{cow98b}
+%% \begin{equation}
+%% {\rm log} L(\theta) = \sum_{i=0}^{N} n_{i} \ {\rm log} \ \nu(\theta)
+%% \end{equation}
+
+%\subsection{Numerical example}
+
+%The following R script \citep{R} illustrates how likelihood estimates of mortality rates are obtained from this simple cohort catch data.
+%\verbatiminput{../Scripts/HowToEstimateFfromCatchData.R}
+
+%The following R script \citep{R} illustrates how catchability and natural mortality (M) are estimated providing effort is given
+%\verbatiminput{../Scripts/HowToEstimateMandQfromCatchData.R}
+
+%The following R script \citep{R} illustrates how catchability and natural mortality (M) are estimated from a catch at age matrix providing effort is given
+%\verbatiminput{../Scripts/HowToEstimateqAndMFromCatchAtAge.R}

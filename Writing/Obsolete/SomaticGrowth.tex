@@ -1,0 +1,28 @@
+%Estimates of the variation of sand whiting length at age are available from the literature. Several studies report estimates of von Bertalanffy growth function parameters (Tab.). Often, these estimates were reported without associated uncertainties which render estimates comparison between studies difficult as one cannot assess the magnitude of differences relative to estimates uncertainties. As a consequence, people might conclude that results from two studies are different when in reality they are well within the range of estimated values.
+
+\subsection{von Bertalanffy growth function parameters estimates based on LTMP data}
+
+\subsubsection{Method}
+
+The LTMP data were used to estimate the parameters of the von Bertalanffy \citep{vb57} growth function. 
+
+\begin{equation}
+\hat{\mu}_{t_{i}} = {\rm f}(L_{\infty}, k, t_{0},t_{i}) = L_{\infty} [ 1 - {\rm exp} ( - k ( t_{i} - t_{0})) ]
+\end{equation}
+
+This analysis was executed to address the following two issues: first, von Bertalanffy parameters presented in the literature often lack an associated estimate of uncertainty, rendering comparisons between the results of multiple studies often impossible as differences in point estimates might not necessarily exceed un-reported estimation errors; second, researchers in the LTMP identified sampling biases in their dataset resulting from commercial gear selectivity missing short individuals at age in the lower age-groups.\\
+
+The von Bertalanffy \citep{vb57} growth function was fitted to the data as it is the most widely used somatic growth model in fisheries research. The data were binned into monthly age-groups ($t_{i}$, $ 3 \leq t_{i} \leq 119$). Mean length ($\mu_{t_{i}}$) and standard deviation (sd, $\sigma_{t_{i}}$) were computed for each age-group (Fig.~\ref{fig:VBGF-usingLTMPdata}). Only age-groups with 5 or more observations to calculate mean and sd were retained in the following analyses to ensure that the growth model was fitted to precise enough data. The von Bertalanffy growth model was fitted to mean length at age (in cm) using a $\chi^{2}$ statistic in order to (1) estimate the paramaters of the von Bertalanfy function and (2) assess the goodness of fit of this model to LTMP data \citep{cow98b}
+
+\begin{equation}
+\chi^{2} = \sum_{i} \frac{ [ \mu_{t_{i}} - {\rm f}(L_{\infty}, k, t_{0},t_{i}) ] ^{2}}{\sigma_{t_{i}}^2}
+\end{equation}
+
+Parameters of the von Bertalanffy function were estimated using the {\it optim} in R \cite{R} (see details on p.~\pageref{code:VBGFestimation}).\\
+
+\subsubsection{Results}
+
+von Bertalanffy growth function provided a good summary of the entire dataset ($\chi^{2}_{\rm{DF}=73}$=29.48, p-value=0.999; Fig.~\ref{fig:VBGF-usingLTMPdata}). Estimates of $L_{\infty}$ and $k$ were consistent with the work of Cleland (1944) but not Dredge (1976) (Tab.~\ref{tab:VBestimates.tex} and Tab.~\ref{tab:VBestimatesFromLiterature.tex}) as estimated by \cite{HoyR2000}. $t_{0}$ was estimated to large negative values, suggesting that individual sand whiting were over 10 cm at age 0 months: this result was somewhat un-realistic and assumed to result from sampling biases due to commercial fishing gear retaining only the largest individuals in the smaller age-groups. To assess the validity of this assumption, the same analysis was repeated excluding data from age-groups less or equal to 30 months old. This new analysis concluded also that von Bertanffy growth function provided a good summary of the data ($\chi^{2}_{\rm{DF}=56}$=15.06, p-value=1; Fig.~\ref{fig:VBGF-usingLTMPdata}). But in this case, the estimates of $t_{0}$ were not significantly different than 0 (Tab.~\ref{tab:VBestimates.tex}): a more plausible result to be used in further analyses.
+
+
+

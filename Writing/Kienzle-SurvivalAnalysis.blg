@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Kienzle-SurvivalAnalysis.aux
+The style file: plainnat.bst
+Database file #1: a-JLong.bib
+Database file #2: Biblio.bib
+You've used 5 entries,
+            2773 wiz_defined-function locations,
+            645 strings with 5976 characters,
+and the built_in function-call counts, 1761 in all, are:
+= -- 136
+> -- 94
+< -- 5
++ -- 32
+- -- 27
+* -- 111
+:= -- 287
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 20
+chr.to.int$ -- 5
+cite$ -- 10
+duplicate$ -- 100
+empty$ -- 161
+format.name$ -- 40
+if$ -- 364
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 10
+newline$ -- 33
+num.names$ -- 20
+pop$ -- 63
+preamble$ -- 1
+purify$ -- 19
+quote$ -- 0
+skip$ -- 73
+stack$ -- 0
+substring$ -- 10
+swap$ -- 5
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 30
+warning$ -- 0
+while$ -- 15
+width$ -- 0
+write$ -- 68

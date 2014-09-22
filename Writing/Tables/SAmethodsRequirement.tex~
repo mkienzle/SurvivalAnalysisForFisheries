@@ -1,0 +1,27 @@
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Fri Nov 15 13:22:24 2013
+%\begin{table}[ht]
+\begin{sidewaystable}[ht]
+\centering
+\tiny
+\begin{tabular}{lccccccccl}
+  \toprule
+  Model & \multicolumn{5}{c}{Stock information } & \multicolumn{3}{c}{Fishery information} & Reference \\
+  \cmidrule(r){1-1}
+  \cmidrule(r){2-6}
+  \cmidrule(r){7-9}
+  \cmidrule(r){10-10}
+
+                  & Nat. mort. & Som. growth & LW rel.    & Mat. ogive & Abun. Idx & Total catch & Total effort & Age comp. of catch & \\
+  \midrule
+Delay difference  & \Checkmark & \Checkmark  & \Checkmark &            &           & \Checkmark  & \Checkmark   & & \citep{sch85a} \\ \hline \hline
+
+ICA & \Checkmark & \Checkmark  & \Checkmark &            & \Checkmark& \Checkmark  & \Checkmark   & \Checkmark, $n>r$ & \citep{pat96a} \\
+Gen. catch at age & \Checkmark & \Checkmark  & \Checkmark &            & \Checkmark& \Checkmark  & \Checkmark   & \Checkmark, $n>r$ & \citep{Four82a} \\
+
+   \hline
+\end{tabular}
+\caption{Requirements for different stock assessment methods. Following \cite{Four82a}, $r$ denotes the number of age classes in the fishery and $n$ the number of year of fishery information.}
+\label{tab:SAmethodRequirement}
+\end{sidewaystable}
+%\end{table}
