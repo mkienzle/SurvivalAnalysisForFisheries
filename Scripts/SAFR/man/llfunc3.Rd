@@ -1,0 +1,32 @@
+\name{llfunc3}
+\alias{llfunc3}
+\title{log-likelihood function of catch at age matrix to estimate
+  catchability, selectivity and natural mortality}
+\description{
+  This function calculate the log-likelihood of the survival model
+  assuming fishing mortality the outer product of catchability times
+  effort and selectivity and natural mortality is constant.}
+\usage{llfunc3(par, catch, effort, selectivity.at.age, catchability.scaling.factor)}
+\arguments{
+  \item{par}{a vector of two parameters: catchability and natural mortality}
+  \item{catch}{a vector of catch}
+  \item{effort}{a vector of effort}
+  \item{selectivity.at.age}{a vector of selectivity at age bound between
+  0 and 1}
+  \item{catchability.scaling.factor}{a factor to scale the parameters}
+  }
+\references{ NONE }
+\examples{
+# Simulate data
+set.seed(3)
+max.age <- 9
+sim <- GenerateData2(max.age = max.age, nb.of.cohort = 30) # Generate catch using gear selectivity
+
+# Estimate assuming you know selectivity
+result <- optim(par = c(0.2,1), fn = llfunc3, catch = sim$catch, effort = sim$effort, catchability.scaling.factor = 1e-4, selectivity.at.age =  c(0,0,seq(1/(max.age - 3), (max.age - 4)/(max.age - 3), length = max.age - 4), 1,1), hessian = TRUE)
+ errors <- sqrt(diag(solve(result$hessian)))
+
+print(paste("Estimated catchability is", round(result$par[1],3), "+-", round(errors[1],3), " x 10^-4"))
+print(paste("Estimated M is", round(result$par[2],3), "+-", round(errors[2],3)))
+}
+\keyword{misc}

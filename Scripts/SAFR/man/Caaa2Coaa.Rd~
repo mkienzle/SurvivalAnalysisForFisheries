@@ -1,0 +1,19 @@
+\name{llfunc2}
+\alias{llfunc2}
+\title{log-likelihood function of catch at age to estimate catchability
+  and natural mortality}
+\description{
+  This function calculate the log-likelihood of the survival model
+  assuming fishing mortality is a linear function of effort and natural
+  mortality is constant.}
+\usage{llfunc2(par, catch, effort, catchability.scaling.factor)}
+\arguments{
+  \item{par}{a vector of two parameters: catchability and natural mortality}
+  \item{catch}{a vector of catch}
+  \item{effort}{a vector of effort}
+  \item{catchability.scaling.factor}{a factor to scale the parameters}
+  }
+\references{
+  Cox (1984) - Analysis of survival data
+}
+\keyword{misc}

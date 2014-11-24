@@ -1,9 +1,16 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bell et~al.(2005)Bell, O'Neill, Leigh, Courtney, and Peel]{Bell2005r}
+P.A. Bell, M.F. O'Neill, G.M. Leigh, A.J. Courtney, and S.L. Peel.
+\newblock Stock assessment of the \uppercase{Q}ueensland-\uppercase{N}ew
+  \uppercase{S}outh \uppercase{W}ales sea mullet fishery ({\it
+  \uppercase{m}ugil cephalus}).
+\newblock Technical Report QI05033, Queensland Government, 2005.
 
 \bibitem[Burnham and Anderson(2003)]{Burnb03}
 K.~P. Burnham and D.~Anderson.
@@ -20,14 +27,46 @@ D.R. Cox and D.~Oakes.
 \newblock \emph{Analysis of survival data}.
 \newblock Chapman and Hall, 1984.
 
-\bibitem[Kleinbaum and Klein(2005)]{kleinbaum2005survival}
-D.G. Kleinbaum and M.~Klein.
-\newblock \emph{Survival Analysis: A Self-Learning Text}.
-\newblock Springer, 2005.
+\bibitem[Edwards(1992)]{edwards1992likelihood}
+A.W.F. Edwards.
+\newblock \emph{Likelihood}.
+\newblock Johns Hopkins University Press, 1992.
+
+\bibitem[Kr\"{u}ck et~al.(2013)Kr\"{u}ck, Innes, and Ovenden]{kruck2013a}
+N.C. Kr\"{u}ck, D.I. Innes, and J.R. Ovenden.
+\newblock New \uppercase{SNP}s for population genetic analysis reveal possible
+  cryptic speciation of eastern australian sea mullet ({\it \uppercase{m}ugil
+  cephalus}).
+\newblock \emph{Molecular Ecology Resources}, 13\penalty0 (4):\penalty0
+  715--725, 2013.
+
+\bibitem[Lester et~al.(2009)Lester, Rawlinson, and Weaver]{Lester2009129}
+R.J.G. Lester, S.E. Rawlinson, and L.C. Weaver.
+\newblock Movement of sea mullet mugil cephalus as indicated by a parasite.
+\newblock \emph{Fisheries Research}, 96\penalty0 (2–3):\penalty0 129 -- 132,
+  2009.
+
+\bibitem[Maunder and Punt(2013)]{Maunder201361}
+Mark~N. Maunder and Andr\'{e}~E. Punt.
+\newblock {A review of integrated analysis in fisheries stock assessment}.
+\newblock \emph{Fisheries Research}, 142:\penalty0 61--74, 2013.
+
+\bibitem[Pollock et~al.(1989)Pollock, Winterstein, and Conroy]{Pollock1989}
+K.H. Pollock, S.R. Winterstein, and M.J. Conroy.
+\newblock Estimation and analysis of survival distributions for radio-tagged
+  animals.
+\newblock \emph{Biometrics}, 45\penalty0 (1):\penalty0 pp. 99--109, 1989.
 
 \bibitem[Quinn and Deriso(1999)]{quin99b}
 T.~J. Quinn and R.~B. Deriso.
 \newblock \emph{Quantitative \uppercase{f}ish \uppercase{d}ynamics}.
 \newblock Oxford University Press, 1999.
+
+\bibitem[{R Core Team}(2013)]{R}
+{R Core Team}.
+\newblock \emph{R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, \uppercase{V}ienna, Austria,
+  2013.
+\newblock URL \url{http://www.R-project.org/}.
 
 \end{thebibliography}

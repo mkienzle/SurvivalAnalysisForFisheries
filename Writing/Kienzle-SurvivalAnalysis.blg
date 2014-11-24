@@ -4,44 +4,44 @@ The top-level auxiliary file: Kienzle-SurvivalAnalysis.aux
 The style file: plainnat.bst
 Database file #1: a-JLong.bib
 Database file #2: Biblio.bib
-You've used 5 entries,
+You've used 11 entries,
             2773 wiz_defined-function locations,
-            645 strings with 5976 characters,
-and the built_in function-call counts, 1761 in all, are:
-= -- 136
-> -- 94
-< -- 5
-+ -- 32
-- -- 27
-* -- 111
-:= -- 287
-add.period$ -- 15
-call.type$ -- 5
-change.case$ -- 20
-chr.to.int$ -- 5
-cite$ -- 10
-duplicate$ -- 100
-empty$ -- 161
-format.name$ -- 40
-if$ -- 364
+            688 strings with 7119 characters,
+and the built_in function-call counts, 4465 in all, are:
+= -- 380
+> -- 252
+< -- 8
++ -- 86
+- -- 75
+* -- 347
+:= -- 714
+add.period$ -- 34
+call.type$ -- 11
+change.case$ -- 53
+chr.to.int$ -- 11
+cite$ -- 22
+duplicate$ -- 217
+empty$ -- 375
+format.name$ -- 94
+if$ -- 919
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 10
-newline$ -- 33
-num.names$ -- 20
-pop$ -- 63
+missing$ -- 14
+newline$ -- 64
+num.names$ -- 44
+pop$ -- 119
 preamble$ -- 1
-purify$ -- 19
+purify$ -- 47
 quote$ -- 0
-skip$ -- 73
+skip$ -- 157
 stack$ -- 0
-substring$ -- 10
-swap$ -- 5
-text.length$ -- 0
+substring$ -- 123
+swap$ -- 12
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 30
+type$ -- 96
 warning$ -- 0
-while$ -- 15
+while$ -- 39
 width$ -- 0
-write$ -- 68
+write$ -- 148

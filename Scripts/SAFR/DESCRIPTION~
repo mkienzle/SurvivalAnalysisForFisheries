@@ -1,0 +1,9 @@
+Package: SAFR
+Type: Package
+Title: Survival Analysis for Fisheries Research demonstrates applications of survival analysis (Cox, 1984) to analysize catch at age data in fisheries research
+Version: 0.1
+Date: 2014-10-27
+Author: Marco Kienzle
+Maintainer: Marco Kienzle <Marco.Kienzle@gmail.com>
+Description: This package implement several likelihood function that allow the user to estimate mortality rates (both natural and fishing) as well as selectivity and recruitment from catch at age data from fisheries.
+License: GPL (>= 2)

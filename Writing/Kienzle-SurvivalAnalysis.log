@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.8.12)  22 SEP 2014 11:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.8.12)  24 NOV 2014 13:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -241,115 +241,162 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
- (./introduction.tex)
-(./SurvivalAnalysisForStockAssessment.tex
-(/home/mkienzle/mystuff/Work/Theory_for_fisheries/Writing/FishingASingleCohort.
-tex [1
+ (./abstract.tex) (./introduction.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 4--62
+
+ []
+
+[1
+
+] (./Generalities.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+) (./ConstantNaturalAndFishingMortality.tex [2]
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+
+ []
+
+) (./EstimatingQandM.tex [3]
+Overfull \hbox (6.77626pt too wide) in paragraph at lines 39--40
+[]\OT1/cmr/m/n/9 Numerical ap-pli-ca-tion of this method were made avail-able u
+s-ing the fol-low-ing com-mands: \OT1/cmr/bx/n/9 li-brary(SAFR);
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+
+ []
+
+) (./EstimatesFromCatchAtAgeMatrices.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+[4])
+Underfull \hbox (badness 10000) in paragraph at lines 15--77
+
+ []
+
+(./SimulationTesting.tex) (./SeaMulletData.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+) (./ResultsOfSimulationTests.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+) (./MortalityEstimatesForSeaMullet.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 4--91
+
+ []
+
+(./discussion.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
+ []
+
+) [7] (./Kienzle-SurvivalAnalysis.bbl
+Missing character: There is no â in font cmr9!
+Missing character: There is no € in font cmr9!
+Missing character: There is no “ in font cmr9!
+) [8
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 57--63
+File: ../Results/Graphics/Estimating-NaturalMortality.ps Graphic file (type eps
+)
 
- []
-
-) [2]
-File: SimplestExample.R  (verbatim)
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
-
- []
-
-[3]
-File: TruncatedDistribution.R  (verbatim)
-File: SimplestExampleUsingCatch.R  (verbatim)
- [4]
-No file ../Scripts/HowToEstimateMandQfromCatchData.R.
-File: ../Scripts/HowToEstimateMQandSelectivity.R  (verbatim)
-
-Overfull \hbox (141.04771pt too wide) in paragraph at lines 57--57
-[]\OT1/cmtt/m/n/10 # BACKGROUND we are looking for a method to estimate M and F
- with data similar to the Torres Strait lobster assessment.[] 
- []
-
-
-Overfull \hbox (272.29657pt too wide) in paragraph at lines 57--57
-[]\OT1/cmtt/m/n/10 # COMMENT if you have only catches, you can't estimate both 
-fishing and natural mortality, you will end-up with M=F but Z will be well esti
-mated[] 
- []
-
-
-Overfull \hbox (230.29694pt too wide) in paragraph at lines 57--57
-[]\OT1/cmtt/m/n/10 #         BUT if you can provide the ratio of catch over tot
-al abundance (basically you have a catch time series and a absolute survey),[] 
-
- []
-
-
-Overfull \hbox (109.54799pt too wide) in paragraph at lines 57--57
-[]\OT1/cmtt/m/n/10 # Suppose you have a 60% (M+F = 0.51) chance survival from b
-oth fishing (F=0.405) and natural mortality (M=0.105)[] 
- []
-
-[5] [6]
-File: ../Scripts/HowToEstimateqMAndSelectivityFromCatchAtAge.R  (verbatim)
-
-Overfull \hbox (30.79868pt too wide) in paragraph at lines 60--60
-[]\OT1/cmtt/m/n/10 sim <- GenerateData2(max.age = max.age, nb.of.cohort = 17) #
- Generate catch using gear selectivity[] 
- []
-
-
-Overfull \hbox (36.04863pt too wide) in paragraph at lines 60--60
-[]\OT1/cmtt/m/n/10 #sim <- GenerateData2(max.age = max.age, nb.of.cohort = 40) 
-# Generate catch using gear selectivity[] 
- []
-
-
-Overfull \hbox (293.29639pt too wide) in paragraph at lines 60--60
-[]\OT1/cmtt/m/n/10 # sim$catch <- sim$catch * matrix(runif( nrow(sim$catch) * n
-col(sim$catch), min = 0.7 , max = 1.3), nrow =  nrow(sim$catch), ncol = ncol(si
-m$catch))[] 
- []
-
-
-Overfull \hbox (282.79648pt too wide) in paragraph at lines 60--60
-[]\OT1/cmtt/m/n/10 sim$catch <- sim$catch * matrix(runif( nrow(sim$catch) * nco
-l(sim$catch), min = 0.9 , max = 1.1), nrow =  nrow(sim$catch), ncol = ncol(sim$
-catch))[] 
- []
-
-[7]
-Overfull \hbox (193.54726pt too wide) in paragraph at lines 60--60
-[]    \OT1/cmtt/m/n/10 #selectivity.at.age <- c(0,0,seq(1/(max.age - 3), (max.a
-ge - 4)/(max.age - 3), length = max.age - 4), 1,1) # FOR TEST PURPOSE[] 
- []
-
-
-Overfull \hbox (57.04845pt too wide) in paragraph at lines 60--60
-[]\OT1/cmtt/m/n/10 print(paste("Estimated catchability is", round(result$par[2]
-,3), "+-", round(errors[2],3), " x 10^-4"))[] 
- []
-
-) [8] (./Kienzle-SurvivalAnalysis.bbl) [9
-
-]
-File: Graphics/IllustrationOfExpDecay.ps Graphic file (type eps)
-
-<Graphics/IllustrationOfExpDecay.ps>
-Overfull \hbox (1.7216pt too wide) in paragraph at lines 92--93
+<../Results/Graphics/Estimating-NaturalMortality.ps>
+Overfull \hbox (1.7216pt too wide) in paragraph at lines 115--116
 [][] 
  []
 
-[10
+File: ../Results/Graphics/Estimating-Catchability.ps Graphic file (type eps)
+<../Results/Graphics/Estimating-Catchability.ps>
+Overfull \hbox (1.7216pt too wide) in paragraph at lines 122--123
+[][] 
+ []
+
+[9
+
+] [10] (./Tables/SimulationParameters.tex) (./Tables/Mullet-NbAtAge.tex
+Overfull \hbox (58.2789pt too wide) in paragraph at lines 5--18
+ [][] 
+ []
+
+)
+(/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
+ables/Sensitivity-CatchabilityToMulletDataTruncation.tex)
+(/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
+ables/Sensitivity-NaturalMortalityToMulletDataTruncation.tex) [11
+
+] [12]
+[13] [14] (./DefinitionsOfMathematicalSymbols.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 7.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 7.
+ (./Tables/Cohorts.tex)) [15
 
 ] (./Kienzle-SurvivalAnalysis.aux) ) 
 Here is how much of TeX's memory you used:
- 2545 strings out of 495033
- 33436 string characters out of 6181744
- 89461 words of memory out of 5000000
- 5715 multiletter control sequences out of 15000+600000
- 9837 words of font info for 36 fonts, out of 8000000 for 9000
+ 2629 strings out of 495033
+ 35453 string characters out of 6181744
+ 97461 words of memory out of 5000000
+ 5757 multiletter control sequences out of 15000+600000
+ 10972 words of font info for 40 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 30i,13n,24p,886b,294s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,14n,24p,1382b,354s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Kienzle-SurvivalAnalysis.dvi (10 pages, 37928 bytes).
+Output written on Kienzle-SurvivalAnalysis.dvi (15 pages, 60716 bytes).

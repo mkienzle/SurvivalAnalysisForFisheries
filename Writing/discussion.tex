@@ -1,0 +1,25 @@
+This application of survival analysis to fisheries catch at age data provides a novel likelihood approach to estimate natural, fishing mortalities and gear selectivity. Testing this method with simulated data showed that it provided un-biased estimates of natural mortality and catchability over a wide range of simulated values. This likelihood method should find its place naturally in integrated stock assessment \citep{Maunder201361} as it provide an efficient way of dealing with catch at age data.\\
+
+% There are advantage of reducing the number of age-groups when number of individual become small because there is a lot of uncertainty where there are little data which increased uncertainty on other parameters
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Simulations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The simulations used a logistic gear-selectivity to generate and fit the data although we would have preferred to generate data from one of the many possible gear-selectivity functions or even using non-parametric procedures. Simulations showed that gear selectivity was most difficult to estimate. The sea mullet case study was in fact not fitted with a logistic curve but selectivity was estimated through a tedious process to search each proportion retained at age that best fitted the data as measured by the likelihood. This tedious process could not be automatised into the simulation-testing framework to provide automatic identification of gear-selectivity. Therefore it was left out for a future work. Criticisms that this somewhat simplified the problem would be correct. But the current article was designed as an introduction to these methods in fisheries research not one that solves all problems at once. The purpose of writing the present manuscript was to provide likelihood methods allowing to identify the correct gear-selectivity. \\ %, as shown by the sea mullet case study, by comparing many possibilities and assessing which minimize the likelihood. The current simulations provided an evaluation of the properties of these estimators assuming the shape of gear-selectivity was known. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Sea mullet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% about sea mullet stock structure
+Parasite data suggested that the bulk of sea mullet caught in Queensland fishery is based on local fish populations and not migrating from NSW \citep{Lester2009129}. While genetic analyses could not identify differences in single nucleotide polymorphism between samples from south QLD and NSW \citep{kruck2013a}.\\
+
+% estimate of natural mortality
+The sensitivity analysis to data truncation showed a weak trend in increasing uncertainty associated with natural mortality as more older age-groups containing few observations were added to the analysis suggesting that lack of information with those create large uncertainties on gear selectivity estimates which translate into greater estimates of natural mortality uncertainty.\\
+
+%%%%%%%
+% Future work
+%%%%%%%
+This survival analysis approach to fisheries catch at age data can be further expanded to provide an estimator of recruitment.

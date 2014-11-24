@@ -1,0 +1,6 @@
+
+n <- runif(1, min = 3, max = 20)
+p <- runif(1, min = 3, max = 10)
+
+m1 <- matrix(NA, nrow=n, ncol = p)
+print(m1)

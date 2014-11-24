@@ -1,0 +1,9 @@
+EstimateRecruitment <- function(Z){
+# the idea is that each catch figure provides an estimate of recruitment
+    
+    estimates <- catch / ((Z-M) * ((exp(-Z*age) - exp(-Z*(age+1)))/Z) )
+    
+# Use mean and sd of estimates to provide the best estimate
+    return(c(mean(estimates), sd(estimates)))
+}
+

@@ -1,0 +1,23 @@
+Methods to estimate mortality and selectivity from a matrix containing a sample of number at age were tested with simulated datasets to characterise their performance. Variable number of cohorts ($n+p-1$); sample size and amount of white noise were simulated. The simulated datasets were created by generating an age-structure population using random recruitment for each cohort, natural mortality constant through years and age was randomly generated between ... and ... in each simulated dataset, random catchability and random fishing effort in each year (Tab.~\ref{tab:SimulationParameters.tex}). A catch at age matrix was calculated using a logistic gear selectivity with 2 parameters. 
+
+\begin{equation}
+s_{a_{i}} = \frac{1}{1  + exp( \alpha - \beta \times a_{i})}
+\end{equation}
+
+Several sampling strategies were implemented to assess how it affected mortality estimates. The problem with sampling fish cohorts is that the surveyor never has in front of him/her an entire cohort to randomly chose from. Instead s/he has access to "slices" of it each year in the form a catch. The magnitude of catch changes from year to year as a factor of fishing effort (and many other factors including variations in selectivity, behavioural changes, etc...) distorting the representation of cohorts. The challenge is to design a sampling strategy which distort as little as possible the sampling of each cohort. To study this phenomenom, we implemented first a sampling strategy that consist in sampling randomly from the entire simulated catch at age data (SS1), a strategy not applicable to real life but that has the merit to allow to assess the behaviour the maximum likelihood estimator and provide a benchmark for other sampling strategies. Second, we implemented a sampling strategy that collected a fixed number of sample ($N$) each year (SS2). Finally the third analytical method (SS3) was to weight number at age in the sample ($S_{i,j}$) by estimated total catch at age ($\hat{C}_{i,j}$) :
+
+\begin{equation}
+\hat{C}_{i,j} = p_{i,j} \odot C_{i} \otimes v(j)
+\end{equation}
+
+\noindent where $p_{i,j}$ is the proportion at age (see appendix p.~\pageref{Appendix:DefinitionsOfMathematicalSymbols}), $C_{i}$ is a column vector containing the total number of fish caught in each year $i$ and $v(j)$ is a row vector of 1's. 
+% Rencher & Schaalje book on linear models
+And a weighted sample ($S^{*}_{i,j}$) was obtained using the fraction of total catch sampled
+\begin{equation}
+S^{*}_{i,j} = \hat{C}_{i,j} \times \frac{\sum_{i,j} S_{i,j}}{\sum_{i} C_{i}}
+\end{equation}
+
+Note that $\sum_{i,j} S_{i,j} = \sum_{i,j} S^{*}_{i,j}$.
+%implemented a strategy that collected a number of samples in proportion to fishing effort (SS3).\\
+
+A sample of $N$ individuals per year was drawn at random from this matrix of catch at age, creating a matrix of sampled number at age data, with dimensions $n \times p$ containing $n \times N$ data, that were processed with survival analysis methods described in previous sections. %Multiplicative white noise of magnitude 0\%, $\pm$ 10\%, ..., $\pm$ 50\% was applied to these simulated data to assess how it influenced uncertainty on parameter estimates.
