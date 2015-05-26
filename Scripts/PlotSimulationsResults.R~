@@ -1,13 +1,3 @@
-dataset <- read.csv( file = "../Results/Simulations/CompareEstimates.csv")
-
-with(dataset, table(sampling.type, Optimization.status))
+dataset <- read.csv( file = "../Simulations/CompareEstimates.csv")
 
 library(ggplot2)
-
-p1 <- ggplot(aes(x= as.factor(round(Nat.Mort.sim,1)), y=Nat.Mort.est, fill = sampling.type),
-             data = subset(dataset, Optimization.status == "successful" & n.sample.per.year == 1e3)) + geom_boxplot()
-p1 <- p1 + labs(x = "Simulated natural mortality", y = "Estimated natural mortality")
-p1 <- p1 + theme(panel.grid.minor = element_line(colour="white", size=0.5)) +
-    scale_y_continuous(minor_breaks = seq(-1, 1, 0.1), breaks = seq(-1,2,0.5))
-
-print(p1)

@@ -49,6 +49,18 @@ result <- optim(par = c(0.1), fn = llfunc1, catch = catch, method = c("L-BFGS-B"
       lower = c(1e-2), upper = c(3), hessian = TRUE)
 print(paste("Estimated Z is", round(result$par,3), "+-", round(sqrt(diag(solve(result$hessian))),3)))
 
+### Estimate of Z using a plus group
+ap <- ifelse( (0.0001 * sum(catch)) < catch[11], 11, min(which(catch < (0.0001 * sum(catch)) )))
+catch1 <- catch[1:ap]; catch1[ap] <- sum(catch[ap:11]) # create the +group
+
+# if the number of observation is large enough so that there is no need to create a +group
+# then do not use the +group option
+ifelse( length(catch) == length(catch1), print("+group option not used"),
+{ 
+result1 <- optim(par = c(0.1), fn = llfunc1, catch = catch1, plus.group = TRUE, method = c("L-BFGS-B"),
+      lower = c(1e-2), upper = c(3), hessian = TRUE)
+print(paste("Estimated Z is", round(result1$par,3), "+-", round(sqrt(diag(solve(result1$hessian))),3)))
+})
 
 }
 \keyword{misc}

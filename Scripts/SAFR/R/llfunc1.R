@@ -1,5 +1,6 @@
+# MODIFIED 8 May 2015
 # Maximum likelihood function to estimate Z using catch at age from a single cohort
-llfunc1 <- function(Z, catch){ # a function of only 1 parameter (Z)
+llfunc1 <- function(Z, catch, plus.group = FALSE){ # a function of only 1 parameter (Z)
 
   # Age assumed in year, catch data grouped in yearly bins
   age <- seq(0, length(catch)-1)
@@ -10,6 +11,7 @@ llfunc1 <- function(Z, catch){ # a function of only 1 parameter (Z)
 
   # Finally the likelihood
   P <- prob1-prob2
+  if(plus.group) P[length(catch)] <- prob1[length(catch)] # change probability to account for a +group
   -sum(catch * log( P / sum(P) ))
 
 } # End of function

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.8.12)  24 NOV 2014 13:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.1.27)  26 MAY 2015 07:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -26,7 +26,7 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/etc/texmf/tex/latex/config/color.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: dvips.def on input line 130.
@@ -37,9 +37,6 @@ File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
 File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/bbding/bbding.sty
-Package: bbding 1999/04/15 v1.01 Dingbats symbols
-)
 (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip43
@@ -121,8 +118,8 @@ Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
-File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: dvips.def on input line 91.
 )
@@ -226,52 +223,104 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \bframebox=\box33
 LaTeX Info: Redefining \\ on input line 3056.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip60
+\f@ncyO@elh=\skip61
+\f@ncyO@erh=\skip62
+\f@ncyO@olh=\skip63
+\f@ncyO@orh=\skip64
+\f@ncyO@elf=\skip65
+\f@ncyO@erf=\skip66
+\f@ncyO@olf=\skip67
+\f@ncyO@orf=\skip68
+)
 (./Kienzle-SurvivalAnalysis.aux)
 \openout1 = `Kienzle-SurvivalAnalysis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
  (./abstract.tex) (./introduction.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 4--62
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
+ [1
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-[1
+)
+Underfull \hbox (badness 10000) in paragraph at lines 5--62
 
-] (./Generalities.tex
+ []
+
+(./Generalities.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-) (./ConstantNaturalAndFishingMortality.tex [2]
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[2]) (./ConstantNaturalAndFishingMortality.tex
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [3]
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--63
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
-) (./EstimatingQandM.tex [3]
-Overfull \hbox (6.77626pt too wide) in paragraph at lines 39--40
-[]\OT1/cmr/m/n/9 Numerical ap-pli-ca-tion of this method were made avail-able u
-s-ing the fol-low-ing com-mands: \OT1/cmr/bx/n/9 li-brary(SAFR);
+) (./EstimatingQandM.tex
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [5]
+Overfull \hbox (29.8828pt too wide) in paragraph at lines 39--40
+[]\OT1/cmr/m/n/9 Numerical ap-pli-ca-tions were made avail-able at $\OT1/cmtt/m
+/n/9 https : / / github . com / mkienzle / SurvivalAnalysisForFisheries$
  []
 
 
@@ -284,12 +333,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-[4])
-Underfull \hbox (badness 10000) in paragraph at lines 15--77
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
  []
 
-(./SimulationTesting.tex) (./SeaMulletData.tex
+)
+Underfull \hbox (badness 10000) in paragraph at lines 22--75
+
+ []
+
+(./SimulationTesting.tex
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [7]
+Underfull \hbox (badness 10000) in paragraph at lines 20--22
+
+ []
+
+)
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [8] (./SeaMulletData.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
@@ -299,7 +378,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-[5]
+
 Underfull \hbox (badness 10000) in paragraph at lines 5--6
 
  []
@@ -309,8 +388,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
@@ -319,56 +414,142 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-)
-Underfull \hbox (badness 10000) in paragraph at lines 4--91
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-(./discussion.tex
+) (./discussion.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  []
 
-) [7] (./Kienzle-SurvivalAnalysis.bbl
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
+ []
+
+) (./acknowledgement.tex)
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [13] (./Kienzle-SurvivalAnalysis.bbl
 Missing character: There is no â in font cmr9!
 Missing character: There is no € in font cmr9!
 Missing character: There is no “ in font cmr9!
-) [8
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [14
 
-]
+])
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [15]
 File: ../Results/Graphics/Estimating-NaturalMortality.ps Graphic file (type eps
 )
 
 <../Results/Graphics/Estimating-NaturalMortality.ps>
-Overfull \hbox (1.7216pt too wide) in paragraph at lines 115--116
+Overfull \hbox (1.7216pt too wide) in paragraph at lines 109--110
 [][] 
  []
 
 File: ../Results/Graphics/Estimating-Catchability.ps Graphic file (type eps)
 <../Results/Graphics/Estimating-Catchability.ps>
-Overfull \hbox (1.7216pt too wide) in paragraph at lines 122--123
+Overfull \hbox (1.7216pt too wide) in paragraph at lines 116--117
 [][] 
  []
 
-[9
+File: ../Results/Graphics/ComparisonOfNegLL.ps Graphic file (type eps)
+<../Results/Graphics/ComparisonOfNegLL.ps>
+Overfull \hbox (1.7216pt too wide) in paragraph at lines 123--124
+[][] 
+ []
 
-] [10] (./Tables/SimulationParameters.tex) (./Tables/Mullet-NbAtAge.tex
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[16
+
+]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [17]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [18] (./Tables/SimulationParameters.tex) (./Tables/Mullet-NbAtAge.tex
 Overfull \hbox (58.2789pt too wide) in paragraph at lines 5--18
+ [][] 
+ []
+
+)
+(/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
+ables/MaximumLikelihoodProbabilitiesOfMulletAgeSampleWeightedByTotalCatch.tex
+Overfull \hbox (143.22395pt too wide) in paragraph at lines 5--19
  [][] 
  []
 
@@ -376,27 +557,81 @@ Overfull \hbox (58.2789pt too wide) in paragraph at lines 5--18
 (/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
 ables/Sensitivity-CatchabilityToMulletDataTruncation.tex)
 (/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
-ables/Sensitivity-NaturalMortalityToMulletDataTruncation.tex) [11
+ables/Sensitivity-NaturalMortalityToMulletDataTruncation.tex)
+(/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
+ables/EffectOfWeightingOnMulletEstimates.tex)
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [19
 
-] [12]
-[13] [14] (./DefinitionsOfMathematicalSymbols.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 7.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
+]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [20]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [21]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [22]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [23]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [24]
+(./DefinitionsOfMathematicalSymbols.tex
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 7.
- (./Tables/Cohorts.tex)) [15
+ (./Tables/Cohorts.tex)
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [25
 
-] (./Kienzle-SurvivalAnalysis.aux) ) 
+])
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [26]
+(./Kienzle-SurvivalAnalysis.aux) ) 
 Here is how much of TeX's memory you used:
- 2629 strings out of 495033
- 35453 string characters out of 6181744
- 97461 words of memory out of 5000000
- 5757 multiletter control sequences out of 15000+600000
- 10972 words of font info for 40 fonts, out of 8000000 for 9000
+ 2734 strings out of 495029
+ 37168 string characters out of 6181523
+ 109527 words of memory out of 5000000
+ 5847 multiletter control sequences out of 15000+600000
+ 11672 words of font info for 42 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 30i,14n,24p,1382b,354s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,15n,43p,1327b,419s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Kienzle-SurvivalAnalysis.dvi (15 pages, 60716 bytes).
+Output written on Kienzle-SurvivalAnalysis.dvi (26 pages, 94856 bytes).

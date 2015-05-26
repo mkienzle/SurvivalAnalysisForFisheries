@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,11 +11,6 @@ P.A. Bell, M.F. O'Neill, G.M. Leigh, A.J. Courtney, and S.L. Peel.
   \uppercase{S}outh \uppercase{W}ales sea mullet fishery ({\it
   \uppercase{m}ugil cephalus}).
 \newblock Technical Report QI05033, Queensland Government, 2005.
-
-\bibitem[Burnham and Anderson(2003)]{Burnb03}
-K.~P. Burnham and D.~Anderson.
-\newblock \emph{Model Selection and Multi-Model Inference}.
-\newblock Spring{\-}er-Ver{\-}lag, second edition, 2003.
 
 \bibitem[Cowan(1998)]{cow98b}
 G.~Cowan.
@@ -32,6 +27,27 @@ A.W.F. Edwards.
 \newblock \emph{Likelihood}.
 \newblock Johns Hopkins University Press, 1992.
 
+\bibitem[Ferrandis and Hern\'{a}ndez(2007)]{scimar42}
+E.~Ferrandis and P.~Hern\'{a}ndez.
+\newblock Direct survival analysis: a new stock assessment method.
+\newblock \emph{Scientia Marina}, 71\penalty0 (1), 2007.
+
+\bibitem[Fournier and Archibald(1982)]{Four82a}
+D.~Fournier and C.P. Archibald.
+\newblock {A General Theory for Analyzing Catch at Age Data}.
+\newblock \emph{Canadian Journal of Fisheries and Aquatic Sciences},
+  39\penalty0 (8):\penalty0 1195--1207, 1982.
+
+\bibitem[Francis(2014)]{Francis201470}
+R.I.C.C. Francis.
+\newblock Replacing the multinomial in stock assessment models: A first step.
+\newblock \emph{Fisheries Research}, 151\penalty0 (0):\penalty0 70--84, 2014.
+
+\bibitem[Kleinbaum and Klein(2005)]{kleinbaum2005survival}
+D.G. Kleinbaum and M.~Klein.
+\newblock \emph{Survival Analysis: A Self-Learning Text}.
+\newblock Springer, 2005.
+
 \bibitem[Kr\"{u}ck et~al.(2013)Kr\"{u}ck, Innes, and Ovenden]{kruck2013a}
 N.C. Kr\"{u}ck, D.I. Innes, and J.R. Ovenden.
 \newblock New \uppercase{SNP}s for population genetic analysis reveal possible
@@ -47,9 +63,15 @@ R.J.G. Lester, S.E. Rawlinson, and L.C. Weaver.
   2009.
 
 \bibitem[Maunder and Punt(2013)]{Maunder201361}
-Mark~N. Maunder and Andr\'{e}~E. Punt.
+M.N. Maunder and A.E. Punt.
 \newblock {A review of integrated analysis in fisheries stock assessment}.
 \newblock \emph{Fisheries Research}, 142:\penalty0 61--74, 2013.
+
+\bibitem[Pawitan(2013)]{pawitan2013all}
+Y.~Pawitan.
+\newblock \emph{In All Likelihood: Statistical Modelling and Inference Using
+  Likelihood}.
+\newblock OUP Oxford, 2013.
 
 \bibitem[Pollock et~al.(1989)Pollock, Winterstein, and Conroy]{Pollock1989}
 K.H. Pollock, S.R. Winterstein, and M.J. Conroy.
@@ -68,5 +90,18 @@ T.~J. Quinn and R.~B. Deriso.
 \newblock R Foundation for Statistical Computing, \uppercase{V}ienna, Austria,
   2013.
 \newblock URL \url{http://www.R-project.org/}.
+
+\bibitem[Smith and Deguara(2003)]{Smith2003}
+K.~Smith and K.~Deguara.
+\newblock Formation and annual periodicity of opaque zones in sagittal otoliths
+  of {\it \uppercase{m}ugil cephalus} (\uppercase{P}isces:
+  \uppercase{M}ugilidae).
+\newblock \emph{Marine \& Freshwater Research}, 54:\penalty0 57--67, 2003.
+
+\bibitem[Wang(1999)]{Wang99a}
+Y.G. Wang.
+\newblock A maximum-likelihood method for estimating natural mortality and
+  catchability coefficient from catch and effort data.
+\newblock \emph{Marine \& Freshwater Research}, 50:\penalty0 307--11, 1999.
 
 \end{thebibliography}

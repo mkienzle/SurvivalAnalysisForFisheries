@@ -1,5 +1,5 @@
 # log-likelihood function for a catch-at-age matrix
-llfunc4 <- function(par, catch, effort, catchability.scaling.factor){
+llfunc4 <- function(par, catch, effort, catchability.scaling.factor, plus.group = FALSE){
     #print(par)
     if(length(which(par<0)) > 0){ return(1e6)}
     # Re-arrange input data into cohorts
@@ -23,6 +23,7 @@ llfunc4 <- function(par, catch, effort, catchability.scaling.factor){
     prob1 <- F/Z * exp(-(cum.Z-Z))
     prob2 <- F/Z * exp(-cum.Z)
     P <- prob1-prob2
+    if(plus.group) P[,ncol(P)] <- prob1[,ncol(P)] # change probability to account for a +group
 
     # discard zeroes and NA from sum of logs
     index <- which(!is.na(catch.by.cohort) & P!=0)

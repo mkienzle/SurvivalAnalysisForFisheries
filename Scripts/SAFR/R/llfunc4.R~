@@ -1,7 +1,6 @@
 # log-likelihood function for a catch-at-age matrix
-llfunc4 <- function(par, catch, effort, catchability.scaling.factor){
-    #print(par)
-    if(length(which(par<0)) > 0){ return(1e6)}
+llfunc3 <- function(par, catch, effort, selectivity.at.age, catchability.scaling.factor){
+
     # Re-arrange input data into cohorts
     catch.by.cohort <- Caaa2Coaa(catch)
     effort.by.cohort <- Caaa2Coaa(effort)
@@ -9,7 +8,7 @@ llfunc4 <- function(par, catch, effort, catchability.scaling.factor){
     # Allocate param to readable variable names
     q <- par[1] * catchability.scaling.factor
     M <- par[2]
-    selectivity.at.age <- par[-c(1,2)]
+    
     # matrix of fishing mortality
     F <- q * effort.by.cohort * outer(rep(1, nrow(effort.by.cohort)), selectivity.at.age)
 

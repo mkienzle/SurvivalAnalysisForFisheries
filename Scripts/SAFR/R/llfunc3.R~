@@ -1,14 +1,21 @@
-# log-likelihood function for a catch-at-age matrix
-llfunc3 <- function(par, catch, effort, selectivity.at.age, catchability.scaling.factor){
+# log-likelihood function
+llfunc <- function(par){
 
     # Re-arrange input data into cohorts
-    catch.by.cohort <- Caaa2Coaa(catch)
-    effort.by.cohort <- Caaa2Coaa(effort)
+    catch.by.cohort <- Caaa2Coaa(sim$catch)
+    effort.by.cohort <- Caaa2Coaa(sim$effort)
+
+    # optim works best on scaled parameters
+    catchability.mf <- 1e-4
 
     # Allocate param to readable variable names
-    q <- par[1] * catchability.scaling.factor
-    M <- par[2]
-    
+    M <- par[1]
+    q <- par[2] * catchability.mf
+    # Simulated selectivity
+    #selectivity.at.age <- c(0,0,seq(1/(max.age - 3), (max.age - 4)/(max.age - 3), length = max.age - 4), 1,1) # FOR TEST PURPOSE
+    alpha <- par[3]
+    selectivity.at.age <- c(0,0, alpha * seq(1,max.age-4), 1, 1)
+
     # matrix of fishing mortality
     F <- q * effort.by.cohort * outer(rep(1, nrow(effort.by.cohort)), selectivity.at.age)
 
@@ -24,7 +31,8 @@ llfunc3 <- function(par, catch, effort, selectivity.at.age, catchability.scaling
     P <- prob1-prob2
 
     # discard zeroes and NA from sum of logs
-    index <- which(!is.na(catch.by.cohort) & P!=0)
+    index <- which(!is.na(catch.by.cohort) & catch.by.cohort!=0)
+
 
     # Negative log-likelihood
     -sum(catch.by.cohort[index] * log( P[index] / total.over.lines(P)[index]))

@@ -1,5 +1,5 @@
 * using log directory ‘/home/mkienzle/mystuff/Work/SurvivalAnalysisForFisheries/Scripts/SAFR.Rcheck’
-* using R version 3.1.1 (2014-07-10)
+* using R version 3.0.2 (2013-09-25)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * checking for file ‘SAFR/DESCRIPTION’ ... OK
@@ -10,7 +10,11 @@
 * checking if this is a source package ... OK
 * checking if there is a namespace ... OK
 * checking for executable files ... OK
-* checking for hidden files and directories ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  man/.#Coaa2Caaa.Rd
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
 * checking whether package ‘SAFR’ can be installed ... OK
@@ -37,10 +41,53 @@
 * checking Rd files ... OK
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
-* checking for missing documentation entries ... OK
-* checking for code/documentation mismatches ... OK
+* checking for missing documentation entries ... WARNING
+Undocumented code objects:
+  ‘llfunc6’
+All user-level objects in a package should have documentation entries.
+See the chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking for code/documentation mismatches ... WARNING
+Codoc mismatches from documentation object 'llfunc4':
+llfunc4
+  Code: function(par, catch, effort1, effort2,
+                 catchability.scaling.factor1,
+                 catchability.scaling.factor2)
+  Docs: function(par, catch, effort, catchability.scaling.factor)
+  Argument names in code not in docs:
+    effort1 effort2 catchability.scaling.factor1
+    catchability.scaling.factor2
+  Argument names in docs not in code:
+    effort catchability.scaling.factor
+  Mismatches in argument names:
+    Position: 3 Code: effort1 Docs: effort
+    Position: 4 Code: effort2 Docs: catchability.scaling.factor
+
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
-* checking examples ... OK
-* checking PDF version of manual ... OK
+* checking examples ... ERROR
+Running examples in ‘SAFR-Ex.R’ failed
+The error most likely occurred in:
+
+> ### Name: llfunc4
+> ### Title: log-likelihood function of catch at age matrix to estimate
+> ###   catchability, selectivity and natural mortality
+> ### Aliases: llfunc4
+> ### Keywords: misc
+> 
+> ### ** Examples
+> 
+> # Simulate data
+> set.seed(3)
+> max.age <- 9
+> sim <- GenerateData2(max.age = max.age, nb.of.cohort = 30) # Generate catch using gear selectivity
+[1] "Simulated catchability is  2.51 x 10^-4"
+[1] "Simulated natural mortality is 0.218"
+> 
+> # Estimate parameters
+> result2 <- optim(par = c(0.2,1, c(rep(1e-12,5), rep(1, max.age-5))), fn = llfunc4, catch = sim$catch, effort = sim$effort, catchability.scaling.factor = 1e-4, method = c("L-BFGS-B"),
++        lower = c(5e-2,5e-2, rep(1e-12, max.age)), upper = c(10,0.5, rep(1, max.age)), hessian = TRUE, control = list(maxit = 1e3))
+Error in fn(par, ...) : argument 3 matches multiple formal arguments
+Calls: optim -> <Anonymous> -> fn
+Execution halted

@@ -1,15 +1,15 @@
 # Maximum likelihood function to estimate Z using catch at age from a single cohort
-llfunc1 <- function(Z, catch){ # a function of only 1 parameter (Z)
+llfunc1 <- function(Z){ # a function of only 1 parameter (Z)
 
-  # Age assumed in year, catch data grouped in yearly bins
-  age <- seq(0, length(catch)-1)
-    
+    # depends on 2 global variables (2 vectors)
+    #if(getRversion() >= "2.15.1")  utils::globalVariables(c("age", "catch"))
+
   # Calculating the probability of surviving until certain age
-  prob1 <- (1 - exp(-Z * age))
-  prob2 <- (1 - exp(-Z * (age+1)))
+  prob1 <- (1 - exp(-Z * get("age", envir=.GlobalEnv)))
+  prob2 <- (1 - exp(-Z * (get("age", envir=.GlobalEnv)+1)))
 
   # Finally the likelihood
   P <- prob1-prob2
-  -sum(catch * log( P / sum(P) ))
+  -sum( get("catch", envir=.GlobalEnv) * log( P / sum(P) ))
   
 } # End of function

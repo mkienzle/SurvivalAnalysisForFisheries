@@ -1,6 +1,6 @@
 
-R version 3.1.1 (2014-07-10) -- "Sock it to Me"
-Copyright (C) 2014 The R Foundation for Statistical Computing
+R version 3.0.2 (2013-09-25) -- "Frisbee Sailing"
+Copyright (C) 2013 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -23,6 +23,141 @@ Type 'q()' to quit R.
 > library('SAFR')
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("Caaa2Coaa")
+> ### * Caaa2Coaa
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Caaa2Coaa
+> ### Title: Convert catch-at-age to cohort-at-age
+> ### Aliases: Caaa2Coaa
+> ### Keywords: misc
+> 
+> ### ** Examples
+> 
+> nb.at.age <- matrix(sample(1:10, 40, replace = TRUE), nrow = 10, ncol = 4)
+> Caaa2Coaa(nb.at.age)
+      [,1] [,2] [,3] [,4]
+ [1,]   NA   NA   NA    5
+ [2,]   NA   NA   10    6
+ [3,]   NA    3    3    5
+ [4,]    3    2    7    2
+ [5,]    4    7    2    9
+ [6,]    6    4    3    7
+ [7,]   10    8    4    8
+ [8,]    3    5    1    2
+ [9,]    9    8    4    8
+[10,]   10   10    9    5
+[11,]    7    4    4   NA
+[12,]    7    8   NA   NA
+[13,]    1   NA   NA   NA
+> 
+> 
+> 
+> cleanEx()
+> nameEx("Coaa2Caaa")
+> ### * Coaa2Caaa
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Coaa2Caaa
+> ### Title: Convert cohort-at-age to catch-at-age - the opposite of
+> ###   Caaa2Coaa
+> ### Aliases: Coaa2Caaa
+> ### Keywords: misc
+> 
+> ### ** Examples
+> 
+> (nb.at.age <- matrix(sample(1:10, 40, replace = TRUE), nrow = 10, ncol = 4))
+      [,1] [,2] [,3] [,4]
+ [1,]    3    3   10    5
+ [2,]    4    2    3    6
+ [3,]    6    7    7    5
+ [4,]   10    4    2    2
+ [5,]    3    8    3    9
+ [6,]    9    5    4    7
+ [7,]   10    8    1    8
+ [8,]    7   10    4    2
+ [9,]    7    4    9    8
+[10,]    1    8    4    5
+> tmp <- Caaa2Coaa(nb.at.age)
+> Coaa2Caaa(tmp)
+      [,1] [,2] [,3] [,4]
+ [1,]    3    3   10    5
+ [2,]    4    2    3    6
+ [3,]    6    7    7    5
+ [4,]   10    4    2    2
+ [5,]    3    8    3    9
+ [6,]    9    5    4    7
+ [7,]   10    8    1    8
+ [8,]    7   10    4    2
+ [9,]    7    4    9    8
+[10,]    1    8    4    5
+> 
+> 
+> 
+> cleanEx()
+> nameEx("EstimateMandQ")
+> ### * EstimateMandQ
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: EstimateMandQ
+> ### Title: Estimate total mortality (Z) using catch at age from a single
+> ###   cohort
+> ### Aliases: EstimateMandQ
+> ### Keywords: misc
+> 
+> ### ** Examples
+> 
+> # Suppose age varies between 0 and 10
+> age <- seq(0,10)
+> 
+> # Generate a random natural mortality
+> M <- runif(1, min = 1e-2, max = 0.3)
+> 
+> effort <- runif(length(age)-1, min = 1e3, max = 2e3)
+> catchability <- runif(1, min = 1/3e3, max = 1/2e3)
+> 
+> # Catchability scaling factor
+> csf <- 1e-4
+> F <-  catchability * effort
+> 
+> print(paste("Simulated q is", round(catchability / csf,3), as.character(csf)))
+[1] "Simulated q is 3.628 1e-04"
+> print(paste("Simulated M is ", round(M,3)))
+[1] "Simulated M is  0.087"
+> 
+> N0 <- runif(1, min = 4e3, max = 1e4)
+> print(paste("Simulated recruitment is", round(N0)))
+[1] "Simulated recruitment is 8122"
+> 
+> # Calculate number at age using a simple exponential model ( see Quinn and Deriso, 1999)
+> nb.at.age <- cbind(age, N0 * exp(-c(0, cumsum(M + F))))
+> 
+> # Calculate the total number of individual dying at age
+> total.death <- N0 * (exp(-c(0,cumsum(M+F)[-length(effort)])) - exp(-cumsum(M+F)))
+> 
+> # Number of fish dying from fishing is a fraction of total mortality
+> catch <- F/(M+F) * total.death
+> 
+> # Estimate q and M
+> best.qM.est <- EstimateMandQ(catch, effort, catchability.scaling.factor
++ = csf)
+> 
+> errors <- sqrt(diag(solve(best.qM.est$hessian)))
+> 
+> print(" ##### ")
+[1] " ##### "
+> print(paste("Estimated catchability is", round(best.qM.est$par[1],3), "+-", round(errors[1],3), as.character(csf)))
+[1] "Estimated catchability is 3.627 +- 1.395 1e-04"
+> print(paste("Estimated M is", round(best.qM.est$par[2],3), "+-", round(errors[2],3)))
+[1] "Estimated M is 0.087 +- 0.225"
+> 
+> 
+> 
+> 
 > cleanEx()
 > nameEx("EstimateRecruitment")
 > ### * EstimateRecruitment
@@ -63,6 +198,49 @@ Type 'q()' to quit R.
 > # Estimate Z
 > #best.Z.estimate <- EstimateZ(catch)
 > #best.Rec.estimate <- EstimateRecruitment(Z=best.Z.estimate$par)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("EstimateZ")
+> ### * EstimateZ
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: EstimateZ
+> ### Title: Estimate total mortality (Z) using catch at age from a single
+> ###   cohort
+> ### Aliases: EstimateZ
+> ### Keywords: misc
+> 
+> ### ** Examples
+> 
+> # Suppose age varies between 0 and 10
+> age = seq(0,10)
+> 
+> # Suppose you have a M=0.105, F and N0 are arbitrary (randomly generated)
+> M <- 0.105
+> F <- runif(1, min = 0.1, max = 3)
+> print(paste("Simulated Z is", round(M+F,3)))
+[1] "Simulated Z is 0.975"
+> 
+> # Generate a random recruitment
+> N0 <- runif(1, min = 1e3, max = 1e4)
+> print(paste("Simulated recruitment", round(N0)))
+[1] "Simulated recruitment 4349"
+> 
+> # Calculate number at age using a simple exponential model ( see Quinn and Deriso, 1999)
+> nb.at.age <- cbind(age, N0 * exp(-(M+ F)) ^ age)
+> 
+> # Calculate the total number of individual dying at age
+> total.death <- N0 * (exp(-(M+F) * age) - exp(-(M+F) * (age+1)))
+> 
+> # And the fraction dying from fishing 
+> catch <- F/(M+F) * total.death
+> 
+> # Estimate Z
+> best.Z.est <- EstimateZ(catch)
+[1] "Estimated Z is 0.975 +- 0.016"
 > 
 > 
 > 
@@ -230,101 +408,6 @@ Type 'q()' to quit R.
 > # Estimate parameters
 > result2 <- optim(par = c(0.2,1, c(rep(1e-12,5), rep(1, max.age-5))), fn = llfunc4, catch = sim$catch, effort = sim$effort, catchability.scaling.factor = 1e-4, method = c("L-BFGS-B"),
 +        lower = c(5e-2,5e-2, rep(1e-12, max.age)), upper = c(10,0.5, rep(1, max.age)), hessian = TRUE, control = list(maxit = 1e3))
-> errors2 <- sqrt(abs(diag(solve(result2$hessian))))
-> 
-> print(cbind("Estimate" = result2$par, "Error" = errors2))
-          Estimate        Error
- [1,] 2.585535e+00 8.060082e-01
- [2,] 1.996940e-01 5.686720e-02
- [3,] 1.000000e-12 3.922216e-05
- [4,] 1.000000e-12 3.921294e-05
- [5,] 1.630927e-01 2.479707e-02
- [6,] 3.202077e-01 6.425963e-03
- [7,] 4.701046e-01 7.420137e-02
- [8,] 6.097210e-01 1.450241e-01
- [9,] 7.336440e-01 2.344141e-01
-[10,] 8.327652e-01 3.493218e-01
-[11,] 7.694847e-01 4.208302e-01
-> 
-> 
-> 
-> cleanEx()
-> nameEx("llfunc5")
-> ### * llfunc5
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: llfunc5
-> ### Title: log-likelihood function of catch at age matrix to estimate
-> ###   catchability, selectivity and natural mortality
-> ### Aliases: llfunc5
-> ### Keywords: misc
-> 
-> ### ** Examples
-> 
-> # Simulate data
-> set.seed(3)
-> max.age <- 9
-> sim <- GenerateData2(max.age = max.age, nb.of.cohort = 30) # Generate catch using gear selectivity
-[1] "Simulated catchability is  2.51 x 10^-4"
-[1] "Simulated natural mortality is 0.218"
-> 
-> # Estimate parameters, fixing selectivity for the last 2 age-groups to 1
-> result3 <- optim(par = c(0.2,1, rep(1e-12,max.age-2)), fn = llfunc5, catch = sim$catch, effort = sim$effort, catchability.scaling.factor = 1e-4, method = c("L-BFGS-B"),
-+        lower = c(5e-2,5e-2, rep(1e-12, max.age-2)), upper = c(10,0.5, rep(1, max.age-2)), hessian = TRUE, control = list(maxit = 1e3))
-> errors3 <- sqrt(abs(diag(solve(result3$hessian))))
-> 
-> print(cbind("Estimate" = result3$par, "Error" = errors3))
-          Estimate        Error
- [1,] 3.021794e+00 0.3428425671
- [2,] 1.600144e-01 0.0506778418
- [3,] 1.000000e-12 0.0001431798
- [4,] 1.000000e-12 0.0001431791
- [5,] 1.792875e-01 0.0209130465
- [6,] 3.462761e-01 0.0305398405
- [7,] 5.065738e-01 0.0342543121
- [8,] 6.652133e-01 0.0342834427
- [9,] 8.251115e-01 0.0304968993
-> 
-> 
-> 
-> 
-> cleanEx()
-> nameEx("which.cohort")
-> ### * which.cohort
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: which.cohort
-> ### Title: A function that counts and numbers cohorts given a catch at age
-> ###   matrix
-> ### Aliases: which.cohort
-> ### Keywords: misc
-> 
-> ### ** Examples
-> 
-> mat <- matrix(NA, nrow = 5, ncol = 7)
-> which.cohort(mat)
-     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
-[1,]    7    6    5    4    3    2    1
-[2,]    8    7    6    5    4    3    2
-[3,]    9    8    7    6    5    4    3
-[4,]   10    9    8    7    6    5    4
-[5,]   11   10    9    8    7    6    5
-> 
-> 
-> 
-> ### * <FOOTER>
-> ###
-> options(digits = 7L)
-> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  19.541 0.005 19.537 0 0 
-> grDevices::dev.off()
-null device 
-          1 
-> ###
-> ### Local variables: ***
-> ### mode: outline-minor ***
-> ### outline-regexp: "\\(> \\)?### [*]+" ***
-> ### End: ***
-> quit('no')
+Error in fn(par, ...) : argument 3 matches multiple formal arguments
+Calls: optim -> <Anonymous> -> fn
+Execution halted

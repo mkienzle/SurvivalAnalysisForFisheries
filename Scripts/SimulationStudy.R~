@@ -1,5 +1,5 @@
 # CREATED  13 November 2014
-# MODIFIED 20 November 2014
+# MODIFIED 13 November 2014
 
 # PURPOSE test the estimators by simulation
 
@@ -29,20 +29,10 @@ compare.estimates <- data.frame(
     Optimization.status = NA,
     Nat.Mort.sim = NA,
     Nat.Mort.est = NA,
-    Nat.Mort.error = NA,
-    Catchability.sim = NA,
-    Catchability.est = NA,
-    Catchability.error =NA,
-    Logistic.par.alpha.sim = NA,
-    Logistic.par.alpha.est = NA,
-    Logistic.par.alpha.error = NA,
-    Logistic.par.beta.sim = NA,
-    Logistic.par.beta.est = NA,
-    Logistic.par.beta.error = NA)
+    Nat.Mort.error = NA)
     
 
 for( i in 1:n.simulations){
-#for( i in 1:1){ # For tests
 
 print(paste("Simulation ", i,"of", dim(combination.of.par)[1]))
     
@@ -65,16 +55,8 @@ compare.estimates <- rbind(compare.estimates, data.frame(
     Optimization.status = tmp1$optimization.status,
     Nat.Mort.sim = tmp1$population$Nat.Mort,
     Nat.Mort.est = tmp1$optimization$par[2],
-    Nat.Mort.error = tmp1$uncertainties[2],
-    Catchability.sim = tmp1$population$catchability,
-    Catchability.est = tmp1$optimization$par[1] * tmp1$optimization$catchability.scaling.factor,
-    Catchability.error = tmp1$uncertainties[1] * tmp1$optimization$catchability.scaling.factor,
-    Logistic.par.alpha.sim = tmp1$population$logistic.par[1],
-    Logistic.par.alpha.est = tmp1$optimization$par[3],
-    Logistic.par.alpha.error = tmp1$uncertainties[3],
-    Logistic.par.beta.sim = tmp1$population$logistic.par[2],
-    Logistic.par.beta.est = tmp1$optimization$par[4],
-    Logistic.par.beta.error = tmp1$uncertainties[4]))
+    Nat.Mort.error = tmp1$uncertainties[2])
+    )
 
 print(" ################################################################### ")
 ###########################################
@@ -95,16 +77,9 @@ compare.estimates <- rbind(compare.estimates, data.frame(
     Optimization.status = tmp2$optimization.status,
     Nat.Mort.sim = tmp2$population$Nat.Mort,
     Nat.Mort.est = tmp2$optimization$par[2],
-    Nat.Mort.error = tmp2$uncertainties[2],
-    Catchability.sim = tmp2$population$catchability,
-    Catchability.est = tmp2$optimization$par[1] * tmp2$optimization$catchability.scaling.factor,
-    Catchability.error = tmp2$uncertainties[1] * tmp2$optimization$catchability.scaling.factor,
-    Logistic.par.alpha.sim = tmp2$population$logistic.par[1],
-    Logistic.par.alpha.est = tmp2$optimization$par[3],
-    Logistic.par.alpha.error = tmp2$uncertainties[3],
-    Logistic.par.beta.sim = tmp2$population$logistic.par[2],
-    Logistic.par.beta.est = tmp2$optimization$par[4],
-    Logistic.par.beta.error = tmp2$uncertainties[4]))
+    Nat.Mort.error = tmp2$uncertainties[2])
+    )
+
 }
 
 # Keep results

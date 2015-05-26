@@ -9,4 +9,4 @@ Author: Marco Kienzle
 Maintainer: Marco Kienzle <Marco.Kienzle@gmail.com>
 Description: This package implement several likelihood function that allow the user to estimate mortality rates (both natural and fishing) as well as selectivity and recruitment from catch at age data from fisheries.
 License: GPL (>= 2)
-Built: R 3.1.1; ; 2014-11-18 01:28:53 UTC; unix
+Built: R 3.0.2; ; 2015-04-21 21:09:00 UTC; unix

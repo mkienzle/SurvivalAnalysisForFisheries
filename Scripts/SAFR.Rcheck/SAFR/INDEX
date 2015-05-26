@@ -1,6 +1,12 @@
 Caaa2Coaa               Convert catch-at-age to cohort-at-age
+Coaa2Caaa               Convert cohort-at-age to catch-at-age - the
+                        opposite of Caaa2Coaa
+EstimateMandQ           Estimate total mortality (Z) using catch at age
+                        from a single cohort
 EstimateRecruitment     Estimate recruitment using total mortality (Z)
                         and catch at age from a single cohort
+EstimateZ               Estimate total mortality (Z) using catch at age
+                        from a single cohort
 GenerateData2           Convert catch-at-age to cohort-at-age
 llfunc1                 log-likelihood function of catch at age and
                         total mortality (Z) written to Z
@@ -15,6 +21,10 @@ llfunc4                 log-likelihood function of catch at age matrix
 llfunc5                 log-likelihood function of catch at age matrix
                         to estimate catchability, selectivity and
                         natural mortality
+llfunc7                 log-likelihood function of catch at age matrix
+                        to estimate catchability, selectivity [assumed
+                        logistic] and natural mortality
+logistic                logistic function
 my.cumsum               a cumsum that omit NA
 total.over.lines        calculate cumulative sum over the lines of a
                         matrix, ignoring NAs

@@ -14,7 +14,7 @@
 
 \usepackage[dvips]{color}
 
-\usepackage{bbding}
+%\usepackage{bbding}
 \usepackage{natbib}
 \usepackage{setspace}
 \usepackage{amsmath}
@@ -27,6 +27,8 @@
 \usepackage{booktabs}
 \usepackage{subfigure}
 \usepackage{lineno}
+\usepackage{url}
+\renewcommand{\baselinestretch}{1.5} % set space between lines to 1.5
 
 \setlength{\oddsidemargin}{0.5cm}
 \setlength{\evensidemargin}{0.5cm}
@@ -35,38 +37,34 @@
 %\addtolength{\oddsidemargin}{-3cm}
 %\addtolength{\evensidemargin}{-3cm}
 
+\usepackage{fancyhdr}
+\pagestyle{fancyplain} %Note the \fancyplain command !!!
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\lhead[\fancyplain{E}{EE}] {\fancyplain{}{}}
+\chead[\fancyhead{}{}]{\fancyplain{}{—Draft—}}
+\cfoot [ ] {\copyright \hspace{0.1cm} The State of Queensland (through the Department of Agriculture, Fisheries and Forestry Queensland) [2015] \begin{center} \thepage \end{center}}
+
 \begin{document}
 
 \linenumbers
 
-%\title{Yet another general theory for the analysis of catch at age: applying survival analysis to fisheries data}
-%\title{Maximum likelihood estimates of mortality rates using survival analysis applied to fishery catch at age data}
-\title{Maximum likelihood estimates of mortality rates from catch at age data using survival analysis}
-%\title{Applying survival analysis to fisheries catch at age data}
+\title{hazard function models to estimate fish mortality rates by maximum likelihood from age data, with application to the sea mullet ({\it mugil cephalus}) fishery on the east-coast of Australia}
 
-\author{Marco Kienzle\footnote{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia; \newline University of Queensland, School of Agriculture and Food Sciences, St. Lucia, QLD 4072, Australia} and Jason McGilvray\footnote{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia}}% and Nicole White\footnote{QUT, Brisbane, Queensland, Australia}}
+%\author{Marco Kienzle\footnote{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia; \newline University of Queensland, School of Agriculture and Food Sciences, St. Lucia, QLD 4072, Australia}, Jason McGilvray\footnote{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia} and You-Gan Wang\footnote{University of Queensland, Centre for Applications in Natural Resource Mathematics, School of Mathematics and Physics, St. Lucia, QLD 4072, Australia}}
+\author{Marco Kienzle\footnote{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia; \newline University of Queensland, School of Agriculture and Food Sciences, St. Lucia, QLD 4072, Australia}}
 
 \maketitle
 
-%\tableofcontents
-
 \abstract{\input{abstract.tex}}
 
-%\clearpage
-%\newpage
-%\pagecolor{blue}
-
-%\textcolor{white}{test}
-
 \section{Introduction} \input{introduction.tex}
-
-%\section{Survival analysis} \input{SurvivalAnalysisForStockAssessment.tex}
 
 \section{Materials and methods} 
 
 \input{Generalities.tex}
 
-\subsection{The likelihood for constant natural and fishing mortalities} 
+\subsection{The likelihood for constant natural and fishing mortality rates} 
            \input{ConstantNaturalAndFishingMortality.tex}
 
 \subsection{Estimating catchability and natural mortality}
@@ -75,7 +73,7 @@
 \subsection{Estimates from catch at age matrix using fishing mortality separability}
            \input{EstimatesFromCatchAtAgeMatrices.tex}
 
-\subsection{Testing methods by simulation}
+\subsection{Monte Carlo simulations}
            \input{SimulationTesting.tex}
 
 \subsection{A case study: Queensland's sea mullet fishery}
@@ -89,13 +87,9 @@
     \subsection{Mortality estimates for sea mullet}
                \input{MortalityEstimatesForSeaMullet.tex}
 
-%   \subsection{Fishery statistics} \input{ResFisheryStats.tex}
-
-%\section{Results} 
-% ---> did you observed catch in winter being lower than in summer ? if so by how many percent ?
-%\input{}
-
 \section{Discussion} \input{discussion.tex}
+
+\section*{Acknowledgements} \input{acknowledgement.tex}
 
 \clearpage
 \newpage
@@ -113,15 +107,22 @@
 %% Testing how the method can estimate natural mortality
  \begin{figure}[!ht]
      \includegraphics[scale=0.6, angle = -90]{../Results/Graphics/Estimating-NaturalMortality.ps}
-      \caption{Comparison between simulated natural mortality (x-axis) and estimated using (a) a fixed number of sample each year or (b) data weighted by catch. Each panel correspond to an increasing number of samples per year varying from 1000 to 10.000.}
+      \caption{Comparison between simulated natural mortality (x-axis) and estimated using (a) a fixed number of sample each year or (b) data weighted by catch. Each panel correspond to an increasing number of samples per year varying from 125 to 2000.}
      \label{fig:Estimating-NaturalMortality}
    \end{figure}
 
 %% Testing how the method can estimate catchability
  \begin{figure}[!ht]
      \includegraphics[scale=0.6, angle = -90]{../Results/Graphics/Estimating-Catchability.ps}
-      \caption{Comparison between simulated catchability (x-axis) and estimated using (a) a fixed number of sample each year or (b) data weighted by catch. Each panel correspond to an increasing number of samples per year varying from 1000 to 10.000.}
+      \caption{Comparison between simulated catchability (x-axis) and estimated using (a) a fixed number of sample each year or (b) data weighted by catch. Each panel correspond to an increasing number of samples per year varying from 125 to 2000.}
      \label{fig:Estimating-Catchability}
+   \end{figure}
+
+%% Compare negative log-likelihood from survival analysis to multinomial from Fournier and Archibald (1982)
+ \begin{figure}[!ht]
+     \includegraphics[scale=0.6, angle = -90]{../Results/Graphics/ComparisonOfNegLL.ps}
+      \caption{Difference between the negative log-likelihood (negLL) from survival analysis (SA) and multinomial (ML) as a function of the number of sample per year. Each panel represents a particular sampling strategy.}
+     \label{fig:ComparisonOfNegLL}
    \end{figure}
 
 \clearpage
@@ -130,8 +131,11 @@
 \input{Tables/SimulationParameters.tex}
 \input{Tables/Mullet-NbAtAge.tex}
 
+\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/MaximumLikelihoodProbabilitiesOfMulletAgeSampleWeightedByTotalCatch.tex"}
 \input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/Sensitivity-CatchabilityToMulletDataTruncation.tex"}
 \input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/Sensitivity-NaturalMortalityToMulletDataTruncation.tex"}
+
+\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/EffectOfWeightingOnMulletEstimates.tex"}
 
 
 \clearpage

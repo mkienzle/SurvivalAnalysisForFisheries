@@ -48,7 +48,7 @@ And the logarithm of the likelihood was
 {\rm log}(\mathcal{L}) &=& \sum_{i=1}^{n} C_{i} \ {\rm log} \bigl ( \int_{t=a_{i}}^{t=a_{i+1}} f(t; \theta) \ dt \bigr ) \\
                        &=& \sum_{i=1}^{n} C_{i} \ {\rm log} \bigl ( \int_{t=a_{i}}^{t=a_{i+1}} (M + F) \ e^{-(M+F)t} \ dt \bigr ) \\
                        &=& \sum_{i=1}^{n} C_{i} \ {\rm log} \bigl ( e^{-(M+F) \times a_{i}} - e^{-(M+F) \times a_{i+1}} \bigr ) \\
-%                       &=& \sum_{i=1}^{n} C_{i} \ {\rm log} \bigl ( e^{-(M+F) \times a_{i}} (1 - e^{-(M+F)}) \bigr ) \\ % this is not correct because $a_{i+1} \neq a_{i}+1$
+                       &=& \sum_{i=1}^{n} C_{i} \ {\rm log} \bigl ( e^{-(M+F) \times a_{i}} (1 - e^{-(M+F)}) \bigr ) \\
 \end{eqnarray}
 
 This development illustrated an application of survival analysis to estimate mortality rates affecting a cohort of fish by maximum-likelihood using a sample of catch at age. This method was implemented in R \citep{R} in the package Survival Analysis for Fisheries Research (SAFR) provided as supplement material. Numerical application were made available using the following commands: {\bf library(SAFR); example(llfunc1)}.\\

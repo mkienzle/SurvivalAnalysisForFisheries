@@ -1,20 +1,14 @@
 # Generate data
 GenerateData2 <- function(max.age = 10, nb.of.cohort = 20, ...){
 
-# Some parameters
-#max.age <- 10; nb.of.cohort <- 20 # be aware that nb.of.cohort / max.age >= 3
-                               # for some algorithm below to work
-#age <- matrix(seq(0, max.age), nrow = nb.of.cohort, ncol = max.age+1, byrow=T)
-
 # Fishing mortality as the product of catchability and yearly effort
 catchability <- runif(1, min = 1, max = 10)
-#catchability <- 1
-catchability.mf <- 1e-4
+catchability.mf <- 1e-4 # multiplying factor
 
 print(paste("Simulated catchability is ", round(catchability,2), "x 10^-4"))
 
-yearly.effort <- runif(nb.of.cohort, min = 1e3, max = 1.75e3)
-#yearly.effort <- rep(1e3, nb.of.cohort)
+yearly.effort <- runif(nb.of.cohort, min = 1e4, max = 1.75e4)
+
 effort.faced.by.each.cohort <- matrix(nrow = nb.of.cohort, ncol = max.age)
 for(i in 1:nb.of.cohort) effort.faced.by.each.cohort[i,] <- yearly.effort[seq(i, i + max.age - 1)]
 
@@ -23,11 +17,10 @@ selectivity.at.age <- c(0,0,seq(1/(max.age - 3), (max.age - 4)/(max.age - 3), le
 F <- catchability * catchability.mf * effort.faced.by.each.cohort * outer(rep(1, nb.of.cohort), selectivity.at.age)
 
 M <- runif(1, min = 0.05, max = 0.5)
-#M <- 0.2
 print(paste("Simulated natural mortality is", round(M,3)))
 
 # Recruitment: N(0)
-Recruitment <- runif(nb.of.cohort, min = 5e3, max = 1e4)
+Recruitment <- runif(nb.of.cohort, min = 1e6, max = 5e6)
 
 # Nb at age in cohorts
 cohort <- matrix(nrow = nb.of.cohort, ncol = max.age + 1)
@@ -40,28 +33,11 @@ cohort.nb.dead <- cohort[,1:max.age] - cohort[,seq(2, max.age+1)]
 # Catch
 cohort.nb.caught <- F / (M+F) * cohort.nb.dead
 
-#
-#nb.at.age <- cbind(age, Recruitment * exp(-c(0, cumsum(M + F))))
-
-# suppose there are 1000 recruits, 50% survive per year
-#vec.survival = rep(0.5, nb.of.cohort) #
-
-# suppose there are 1000 recruits, survival increase with cohort number
-#vec.survival = seq(0.2, 0.8, length = nb.of.cohort)
-
-# suppose there are 1000 recruits, survival is random
-# vec.survival <- runif(nb.of.cohort, min = 0.1, max = 0.9)
-
 ### Calculate the number alive at age
-# using constant recruitment
-#cohort <- data.frame(1000 * vec.survival ^ age)
-# using variable recruitment
-#cohort <- runif(nb.of.cohort, min = 1e2, max = 1e4) * vec.survival ^ age
 
-# Name nicely you data with arbitrary cohort birth-date
+# Name your dataframe with arbitrary cohort birth-date
 dimnames(cohort)[[1]] = seq( from  = 1988, by = 1, length = nb.of.cohort)
 dimnames(cohort)[[2]] = paste("age-group", seq(0,max.age), sep="")  # give age names
-
 
 # Re-format data into catch at age matrix
 catch.at.age <- matrix(ncol = max.age, nrow = nb.of.cohort)

@@ -142,7 +142,7 @@ return(list(catch = c.catch.at.age, effort = effort.at.age))
 }
 
 # Generate data
-GenerateData2 <- function(max.age = 10, nb.of.cohort = 20){
+GenerateData2 <- function(max.age = 10, nb.of.cohort = 20, catchability.range = c(3,5), effort.range = c(3e3, 5e3), nat.mort.range = c(0.2, 0.5), recruitment.range=c(5e3, 1e6)){
 
 # Some parameters
 #max.age <- 10; nb.of.cohort <- 20 # be aware that nb.of.cohort / max.age >= 3
@@ -150,13 +150,13 @@ GenerateData2 <- function(max.age = 10, nb.of.cohort = 20){
 #age <- matrix(seq(0, max.age), nrow = nb.of.cohort, ncol = max.age+1, byrow=T)
 
 # Fishing mortality as the product of catchability and yearly effort
-catchability <- runif(1, min = 3, max = 5)
+catchability <- runif(1, min = catchability.range[1], max = catchability.range[2])
 #catchability <- 1
 catchability.mf <- 1e-4
 
 print(paste("Simulated catchability is ", round(catchability,2), "x 10^-4"))
 
-yearly.effort <- runif(nb.of.cohort, min = 3e3, max = 5e3)
+yearly.effort <- runif(nb.of.cohort, min = effort.range[1], max = effort.range[2])
 #yearly.effort <- rep(1e3, nb.of.cohort)
 effort.faced.by.each.cohort <- matrix(nrow = nb.of.cohort, ncol = max.age)
 for(i in 1:nb.of.cohort) effort.faced.by.each.cohort[i,] <- yearly.effort[seq(i, i + max.age - 1)]
@@ -166,12 +166,12 @@ n <- max.age-1
 selectivity.at.age <- c(0,0,seq(1/(max.age - 5), (max.age - 6)/(max.age - 5), length = max.age - 8), rep(1,6))
 F <- catchability * catchability.mf * effort.faced.by.each.cohort * outer(rep(1, nb.of.cohort), selectivity.at.age)
 
-M <- runif(1, min = 0.2, max = 0.5)
+M <- runif(1, min = nat.mort.range[1], max = nat.mort.range[2])
 #M <- 0.2
 print(paste("Simulated natural mortality is", round(M,3)))
 
 # Recruitment: N(0)
-Recruitment <- runif(nb.of.cohort, min = 5e4, max = 1e6)
+Recruitment <- runif(nb.of.cohort, min = recruitment.range[1], max = recruitment.range[2])
 
 # Nb at age in cohorts
 cohort <- matrix(nrow = nb.of.cohort, ncol = max.age + 1)
@@ -227,10 +227,10 @@ effort.at.age[nb.of.cohort,1] = effort.faced.by.each.cohort[nb.of.cohort,1] # di
 c.catch.at.age = catch.at.age[complete.cases(catch.at.age),]
 effort.at.age = effort.at.age[complete.cases(effort.at.age),]
 
-return(list(catch = c.catch.at.age, effort = effort.at.age))
+return(list(catch = c.catch.at.age, effort = effort.at.age, M = M, F = F))
 }
 # Generate data
-GenerateData3 <- function(max.age = 10, nb.of.cohort = 20, verbose = FALSE){
+GenerateData3 <- function(max.age = 10, nb.of.cohort = 20, catchability.range = c(3,10), effort.range = c(3e3, 5e3), nat.mort.range = c(0.1, 0.8), recruitment.range=c(1e6, 1e7), log.para.range = c(8,12), log.parb.range = c(1,3), verbose = FALSE){
 
 # Some parameters
 #max.age <- 10; nb.of.cohort <- 20 # be aware that nb.of.cohort / max.age >= 3
@@ -238,13 +238,13 @@ GenerateData3 <- function(max.age = 10, nb.of.cohort = 20, verbose = FALSE){
 #age <- matrix(seq(0, max.age), nrow = nb.of.cohort, ncol = max.age+1, byrow=T)
 
 # Fishing mortality as the product of catchability and yearly effort
-catchability <- runif(1, min = 3, max = 10)
+catchability <- runif(1, min = catchability.range[1], max = catchability.range[2])
 #catchability <- 1
 catchability.mf <- 1e-4
 
 if(verbose) print(paste("Simulated catchability is ", round(catchability,2), "x 10^-4"))
 
-yearly.effort <- runif(nb.of.cohort, min = 1e3, max = 5e3)
+yearly.effort <- runif(nb.of.cohort, min = effort.range[1], max = effort.range[2])
 #yearly.effort <- rep(1e3, nb.of.cohort)
 effort.faced.by.each.cohort <- matrix(nrow = nb.of.cohort, ncol = max.age)
 for(i in 1:nb.of.cohort) effort.faced.by.each.cohort[i,] <- yearly.effort[seq(i, i + max.age - 1)]
@@ -252,21 +252,21 @@ for(i in 1:nb.of.cohort) effort.faced.by.each.cohort[i,] <- yearly.effort[seq(i,
 n <- max.age-1
 #selectivity.at.age <- c(0,0,seq(1/(max.age - 3), (max.age - 4)/(max.age - 3), length = max.age - 4), 1,1)
 #selectivity.at.age <- c(0,0,seq(1/(max.age - 5), (max.age - 6)/(max.age - 5), length = max.age - 8), rep(1,6))
-log.para <- runif(1, min = 8, max=12)
+log.para <- runif(1, min = log.para.range[1], max=log.para.range[2])
 if(verbose) print(paste("Logistic parameter a is", log.para))
-log.parb <- runif(1, min = 1, max=3)
+log.parb <- runif(1, min = log.parb.range[1], max=log.parb.range[2])
 if(verbose) print(paste("Logistic parameter b is", log.parb))
 
 selectivity.at.age <- logistic(log.para,log.parb,seq(1,max.age))
 
 F <- catchability * catchability.mf * effort.faced.by.each.cohort * outer(rep(1, nb.of.cohort), selectivity.at.age)
 
-M <- runif(1, min = 0.1, max = 0.8)
+M <- runif(1, min = nat.mort.range[1], max = nat.mort.range[2])
 #M <- 0.2
 if(verbose) print(paste("Simulated natural mortality is", round(M,3)))
 
 # Recruitment: N(0)
-Recruitment <- runif(nb.of.cohort, min = 1e6, max = 1e7)
+Recruitment <- runif(nb.of.cohort, min = recruitment.range[1], max = recruitment.range[2])
 
 # Nb at age in cohorts
 cohort <- matrix(nrow = nb.of.cohort, ncol = max.age + 1)
@@ -322,7 +322,7 @@ effort.at.age[nb.of.cohort,1] = effort.faced.by.each.cohort[nb.of.cohort,1] # di
 c.catch.at.age = catch.at.age[complete.cases(catch.at.age),]
 effort.at.age = effort.at.age[complete.cases(effort.at.age),]
 
-return(list(catch = c.catch.at.age, effort = effort.at.age, catchability = catchability * catchability.mf, Nat.Mort = M, logistic.par = c(log.para, log.parb), Recruitment = Recruitment))
+return(list(catch = c.catch.at.age, effort = effort.at.age, catchability = catchability * catchability.mf, Nat.Mort = M, logistic.par = c(log.para, log.parb), Recruitment = Recruitment, M = M, F = F))
 }
 
 

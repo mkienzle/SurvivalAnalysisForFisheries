@@ -4,11 +4,11 @@ This appendice contains definitions of some of the mathematical symbols used in 
 
 \begin{itemize}
 
-\item $C_{i,j}$: a matrix of dimensions $n \times p$ ($i \in [1, n]$ and $j \in [1, p]$) containing a number of fishes that were aged and found to belong to specific age-groups $j$ in a particular year $i$. This matrix contains data belonging to $n+p-1$ cohorts, which by convention were labeled using $k$ varying from 1 on the top-right corner of the matrix to $n+p-1$ on the bottom-left (Tab.~\ref{Tab:Cohorts}). 
+\item $C_{i,j}$: a matrix of dimensions $n \times p$ ($i \in [1, n]$ and $j \in [1, p]$) containing a number of fishes that were aged and found to belong to specific age-groups ($j$) in a particular year $i$. This matrix contains data belonging to $n+p-1$ cohorts, which by convention were labeled using $k$ varying from 1 on the top-right corner of the matrix to $n+p-1$ on the bottom-left (Tab.~\ref{Tab:Cohorts}). 
 
 \input{Tables/Cohorts.tex}
 
-The number of data in $C_{i,j}$ belonging to each cohort ($r_{k}$) varies from $1$ to ${\rm min}(n,p)$ and was determined as follow:
+The number of data in $C_{i,j}$ belonging to each cohort ($r_{k}$) varies from $1$ to ${\rm min}(n,p)$ and is determined as follow:
 
 \begin{equation}
 r_{k} = 
