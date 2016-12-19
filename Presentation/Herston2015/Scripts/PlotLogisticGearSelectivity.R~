@@ -1,0 +1,7 @@
+source("/home/mkienzle/mystuff/Work/SurvivalAnalysisForFisheries/Scripts/UsefulFunctions.R")
+
+postscript(file = "../Graphics/LogisticGearSelectivity.ps")
+#par(fg = "white", col.main = "white", col.axis = "white", col.lab = "white", cex = 1.5, cex.lab = 1.8, cex.axis = 1.5, cex.main = 2.5, mai = c(1.5, 1.8, 1.02, 0.2), mgp = c(3.8, 1, 0))
+par(fg = "black", col.main = "black", col.axis = "black", col.lab = "black", cex = 1.5, cex.lab = 1.8, cex.axis = 1.5, cex.main = 2.5, mai = c(1.5, 1.8, 1.02, 0.2), mgp = c(3.8, 1, 0))
+curve(logistic( 5, 2, x), from = 0, to = 20, xlab = "Age (t)", ylab = "s(t)", las = 1)
+dev.off()

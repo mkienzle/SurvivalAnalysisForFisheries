@@ -15,7 +15,7 @@
 \usepackage[dvips]{color}
 
 %\usepackage{bbding}
-\usepackage{natbib}
+\usepackage[round]{natbib}
 \usepackage{setspace}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -43,13 +43,13 @@
 %\renewcommand{\sectionmark}[1]{\markright{#1}{}}
 \lhead[\fancyplain{E}{EE}] {\fancyplain{}{}}
 \chead[\fancyhead{}{}]{\fancyplain{}{—Draft—}}
-\cfoot [ ] {\copyright \hspace{0.1cm} The State of Queensland (through the Department of Agriculture, Fisheries and Forestry Queensland) [2015] \begin{center} \thepage \end{center}}
+\cfoot [ ] {\copyright \hspace{0.1cm} The State of Queensland (through the Department of Agriculture and Fisheries) [2015] \begin{center} \thepage \end{center}}
 
 \begin{document}
 
 \linenumbers
 
-\title{hazard function models to estimate fish mortality rates by maximum likelihood from age data, with application to the sea mullet ({\it mugil cephalus}) fishery on the east-coast of Australia}
+\title{Hazard function models to estimate mortality rates affecting fish populations by maximum likelihood using age data,\\ with application to the sea mullet ({\it Mugil cephalus}) fishery on the Queensland coast (Australia)}
 
 %\author{Marco Kienzle\footnote{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia; \newline University of Queensland, School of Agriculture and Food Sciences, St. Lucia, QLD 4072, Australia}, Jason McGilvray\footnote{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia} and You-Gan Wang\footnote{University of Queensland, Centre for Applications in Natural Resource Mathematics, School of Mathematics and Physics, St. Lucia, QLD 4072, Australia}}
 \author{Marco Kienzle\footnote{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia; \newline University of Queensland, School of Agriculture and Food Sciences, St. Lucia, QLD 4072, Australia}}
@@ -97,7 +97,7 @@
 \bibliography{a-JLong,Biblio}
 %\bibliographystyle{plain}
 \bibliographystyle{plainnat}
-%\bibliographystyle{abbrv}
+%\bibliographystyle{ieeetr}
 %\bibliographystyle{apalike}
 
 \clearpage
@@ -107,21 +107,21 @@
 %% Testing how the method can estimate natural mortality
  \begin{figure}[!ht]
      \includegraphics[scale=0.6, angle = -90]{../Results/Graphics/Estimating-NaturalMortality.ps}
-      \caption{Comparison between simulated natural mortality (x-axis) and estimated using (a) a fixed number of sample each year or (b) data weighted by catch. Each panel correspond to an increasing number of samples per year varying from 125 to 2000.}
+      \caption{Comparison between simulated natural mortality (x-axis) and estimated (y-axis) using a random sample of the matrix of catch (strategy 1); a random sample from each year separately (strategy 2) and the same sample weighted by yearly total catch (strategy 2 - weighted samples). Each panel correspond to an increasing number of samples per year varying from 125 to 2000.}
      \label{fig:Estimating-NaturalMortality}
    \end{figure}
 
 %% Testing how the method can estimate catchability
  \begin{figure}[!ht]
      \includegraphics[scale=0.6, angle = -90]{../Results/Graphics/Estimating-Catchability.ps}
-      \caption{Comparison between simulated catchability (x-axis) and estimated using (a) a fixed number of sample each year or (b) data weighted by catch. Each panel correspond to an increasing number of samples per year varying from 125 to 2000.}
+      \caption{Comparison between simulated catchability (x-axis) and estimated (y-axis) using a random sample of the matrix of catch (strategy 1); a random sample from each year separately (strategy 2) and the same sample weighted by yearly total catch (strategy 2 - weighted samples). Each panel correspond to an increasing number of samples per year varying from 125 to 2000.}
      \label{fig:Estimating-Catchability}
    \end{figure}
 
 %% Compare negative log-likelihood from survival analysis to multinomial from Fournier and Archibald (1982)
  \begin{figure}[!ht]
      \includegraphics[scale=0.6, angle = -90]{../Results/Graphics/ComparisonOfNegLL.ps}
-      \caption{Difference between the negative log-likelihood (negLL) from survival analysis (SA) and multinomial (ML) as a function of the number of sample per year. Each panel represents a particular sampling strategy.}
+      \caption{Difference between the negative log-likelihood ($-{\rm log}(\mathcal{L})$) from survival analysis (SA) and multinomial (ML) as a function of the number of sample per year. Each panel represents a particular sampling strategy.}
      \label{fig:ComparisonOfNegLL}
    \end{figure}
 
@@ -129,20 +129,22 @@
 \newpage
 \section*{Tables}
 \input{Tables/SimulationParameters.tex}
-\input{Tables/Mullet-NbAtAge.tex}
+\input{Tables/Mullet-NbAtAgeEDITED.tex}
 
+\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/MulletModelComparisonEDITED.tex"}
+%\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/Sensitivity-CatchabilityToMulletDataTruncation.tex"}
+%\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/Sensitivity-NaturalMortalityToMulletDataTruncation.tex"}
+
+%\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/EffectOfWeightingOnMulletEstimates.tex"}
+\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/BestParameterEstimatesEDITED.tex"}
 \input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/MaximumLikelihoodProbabilitiesOfMulletAgeSampleWeightedByTotalCatch.tex"}
-\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/Sensitivity-CatchabilityToMulletDataTruncation.tex"}
-\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/Sensitivity-NaturalMortalityToMulletDataTruncation.tex"}
-
-\input{"/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/Tables/EffectOfWeightingOnMulletEstimates.tex"}
-
 
 \clearpage
 \newpage
-\section*{Appendices}
+\appendix
+\section{Appendix}
 
-\subsection*{Definitions of some mathematical symbols}
+\subsection{Definitions of some mathematical symbols}
 \input{DefinitionsOfMathematicalSymbols.tex}
 
 %\clearpage

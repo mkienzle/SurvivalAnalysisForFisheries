@@ -1,18 +1,18 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.8.12)  22 SEP 2014 14:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.1.27)  1 JUN 2015 09:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Kienzle-TowardAnEcologicalModel.tex
+**Kienzle-HazardFunctionModels.tex
 
 ! Emergency stop.
-<*> Kienzle-TowardAnEcologicalModel.tex
-                                       
+<*> Kienzle-HazardFunctionModels.tex
+                                    
 End of file on the terminal!
 
  
 Here is how much of TeX's memory you used:
- 3 strings out of 495033
- 132 string characters out of 6181744
+ 3 strings out of 495029
+ 129 string characters out of 6181523
  45941 words of memory out of 5000000
  3315 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000

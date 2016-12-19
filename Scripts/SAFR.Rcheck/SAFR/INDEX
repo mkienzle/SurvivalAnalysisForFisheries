@@ -14,7 +14,7 @@ llfunc2                 log-likelihood function of catch at age to
                         estimate catchability and natural mortality
 llfunc3                 log-likelihood function of catch at age matrix
                         to estimate catchability, selectivity and
-                        natural mortality
+                        natural mortality from a matrix of catch at age
 llfunc4                 log-likelihood function of catch at age matrix
                         to estimate catchability, selectivity and
                         natural mortality

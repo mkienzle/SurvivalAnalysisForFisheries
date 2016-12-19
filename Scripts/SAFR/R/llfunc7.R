@@ -1,7 +1,7 @@
-# log-likelihood function for a catch-at-age matrix
-llfunc7 <- function(par, catch, effort, catchability.scaling.factor){
-    #print(par)
+prob.for.llfunc7 <- function(par, catch, effort, catchability.scaling.factor){
+
     if(length(which(par<0)) > 0){ return(1e6)}
+
     # Re-arrange input data into cohorts
     catch.by.cohort <- Caaa2Coaa(catch)
     effort.by.cohort <- Caaa2Coaa(effort)
@@ -21,9 +21,23 @@ llfunc7 <- function(par, catch, effort, catchability.scaling.factor){
     cum.Z <- my.cumsum(Z)
 
     # Calculate the probability of observation in each interval
-    prob1 <- F/Z * (1 - exp(-cum.Z))
-    prob2 <- F/Z * (1 - exp(-(cum.Z-Z)))
-    P <- prob1-prob2
+    #prob1 <- F/Z * (1 - exp(-cum.Z))
+    #prob2 <- F/Z * (1 - exp(-(cum.Z-Z)))
+    #P <- prob1-prob2
+
+    l <- exp( - (cum.Z - Z))
+    Qf <- F/Z * (1 - exp(-Z))
+    P <- l * Qf
+
+return(P)
+}
+
+# log-likelihood function for a catch-at-age matrix
+llfunc7 <- function(par, catch, effort, catchability.scaling.factor){
+
+    catch.by.cohort <- Caaa2Coaa(catch)
+    
+    P <- prob.for.llfunc7(par, catch, effort, catchability.scaling.factor)
 
     # discard zeroes and NA from sum of logs
     index <- which(!is.na(catch.by.cohort) & P!=0)

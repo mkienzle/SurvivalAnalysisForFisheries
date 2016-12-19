@@ -11,16 +11,19 @@
   when using method = "L-BFGS-B".
 
 }
-\usage{llfunc1(Z, catch)}
+\usage{llfunc1(Z, catch, plus.group)}
 \arguments{
   \item{Z}{a positive or null scalar giving the constant mortality rate
     (units 1/year)}
   \item{catch}{a vector of number of individual caught at age. The first
     value represent a number of animal between age 0 and 1, the second
     between 1 and 2, etc...}
-  }
+  \item{plus.group}{a boolean indicating whether the data for the last age-group is the sum of observation for this age-group and all olders one or not}
+}
 \references{
   Cox (1984) - Analysis of survival data
+  Dupont (1983) - A Stochastic catch-effort method for estimating animal abundance, Biometrics 39, 1021--1033
+  Chiang (1968) - Introduction to stochastic processes in biostatistics, John Wiley & Sons
 }
 \examples{
 # Suppose age varies between 0 and 10
@@ -62,5 +65,13 @@ result1 <- optim(par = c(0.1), fn = llfunc1, catch = catch1, plus.group = TRUE, 
 print(paste("Estimated Z is", round(result1$par,3), "+-", round(sqrt(diag(solve(result1$hessian))),3)))
 })
 
+print("# An estimate of recruitment")
+# According to Dupont (1983) and Chiang (1968) cohort abundance at t=0 can be estimated by the ratio of total number of individual dying to total probability of dying
+
+#rec.est <- catch / ((result$par[1] - M)/result$par[1]) / (exp(-result$par[1] * #age) - exp(-result$par[1] * (age + 1)) )
+#print(mean(rec.est))
+rec.est <- sum(catch) / ((result$par[1] - M)/result$par[1]) / sum( (exp(-result$par[1] * age) - exp(-result$par[1] * (age + 1)) ))
+print(rec.est)
+print(paste("Compared to N0=", round(N0,3)))
 }
 \keyword{misc}

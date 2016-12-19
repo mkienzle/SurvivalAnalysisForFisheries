@@ -6,7 +6,7 @@
   This function calculate the log-likelihood of the survival model
   assuming fishing mortality the outer product of catchability times
   effort and selectivity and natural mortality is constant.}
-\usage{llfunc3(par, catch, effort, selectivity.at.age, catchability.scaling.factor)}
+\usage{llfunc3(par, catch, effort, selectivity.at.age, catchability.scaling.factor,plus.group)}
 \arguments{
   \item{par}{a vector of two parameters: catchability and natural mortality}
   \item{catch}{a matrix containing number at age in the catch}
@@ -14,6 +14,7 @@
   \item{selectivity.at.age}{a vector of selectivity at age bound between
   0 and 1}
   \item{catchability.scaling.factor}{a factor to scale the parameters}
+  \item{plus.group}{a boolean indicating whether the data for the last age-group is the sum of observation for this age-group and all olders one or not}
   }
 \references{ NONE }
 \examples{

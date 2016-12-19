@@ -1,0 +1,10 @@
+my.log.lik <- function(n){
+
+sum(log(seq(1,n))) - sum(log(seq(1, n -x))) - sum(log(seq(1,x))) + x * log(p) + (n-x) * log(1-p)
+}
+
+x <- sum(catch)
+p <- sum(prob.for.llfunc2(best.qM.est$par, effort, csf))
+n <- 1e4
+
+

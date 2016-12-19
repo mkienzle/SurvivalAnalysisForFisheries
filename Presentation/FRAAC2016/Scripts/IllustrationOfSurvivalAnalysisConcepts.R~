@@ -1,0 +1,9 @@
+#CREATED   9 Feb 2015
+#MODIFIED  9 Feb 2015
+
+#PURPOSE Illustrate hazard, cumulative hazard and probability distribution function
+
+par(mfrow=c(3,3))
+x <- seq(0,20)
+Z <- 0.5
+plot(x, Z, ylab = "Hazard (1/year)", xlab = "t", type = "l")

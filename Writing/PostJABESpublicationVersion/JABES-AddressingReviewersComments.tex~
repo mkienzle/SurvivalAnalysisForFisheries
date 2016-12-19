@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+\usepackage{verbatim}
+%\usepackage{html}
+\usepackage{graphicx}
+\usepackage{setspace}
+\pagestyle{myheadings}
+\markright{Manuscript submission}
+
+%\setlength{\oddsidemargin}{.1375in}
+%\setlength{\evensidemargin}{.1375in}
+\setlength{\oddsidemargin}{.15cm}
+\setlength{\evensidemargin}{.15cm}
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{24cm}
+
+\setlength{\headsep}{0.9cm}
+\setlength{\jot}{0.4cm}
+\setlength{\topsep}{0.6cm}
+
+\flushbottom
+
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup} 
+
+\long\def\symbolfootnotemark[#1]{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnotemark[#1]\endgroup} 
+
+\thispagestyle{empty}% Remove page numbering
+
+\begin{document}
+
+\begin{spacing}{1.2} 
+\hspace{9cm} Brisbane, on the 3$^{rd}$ September 2015\\ \\
+
+\noindent Dear editor of the Journal of Agricultural, Biological, and Environmental Statistics, \\
+
+thank you and your reviewers for reading and commenting on this work. Please find enclosed a revised version of the manuscript and this letter outlining how the reviewers' comments have been addressed. The manuscript has been thoroughly revised in order to address the valuable suggestions of the editor and two reviewers. \\
+
+Below are detailed explanations addressing each reviewer comment point by point.\\ \\ 
+
+\noindent Regards,\\
+\noindent M. Kienzle \\
+\vspace{0.2cm}
+
+We acknowledge the comments of reviewer 1.\\
+
+
+{\bf Reviewer #2: Review on "Hazard function models to estimate mortality rates affecting fish populations with application to the sea mullet fishery on the Queensland coast" \\
+
+The authors applied survival models to make inferences on the fishery data. The proposed survival model is simple exponential model with constant hazard; however, as noted in the manuscript, survival analysis has rarely applied in fisheries stock assessment. In addition, the authors managed to handle practical complications in the fishery research by incorporating the mortality rate, catchability, and selectivity at age in their model. Overall, the manuscript is clearly written and interesting to read. I have a few comments below.}
+
+\noindent {\bf 1.      Are there any non-identifiability issues between q, E(t) and S(t) as they are unknown and appear together multiplicatively? Are there any constraints for those parameters (functions) or what parts of the real data contribute to estimating these parameters (individually)?} \\
+Given that the data in fisheries research come from observational studies, there is always a risk of confounding the effects of multiple variables. Gear selectivity ($s(t)$) is set by law to adjust the size of fish that can be caught by fishermen although fishermen have been found to modify their gear to achieve desired (illegal) catches. Fishing effort ($E(t)$) varies according to economic factors in response to high/low demand for particular species at any given time. Catchability ($q$), which convert a unit of effort into a unit of mortality, is often perceived as a factor related to the abundance of the fish species. Given that each variable depends on relatively independent factors, we could be led to think that confounding is relatively limited. Nevertheless, we can think of cases where 2 or more variables co-vary such as in the case of depleted stock where fishermen both increase their selectivity for smaller ages and effort in an attempt to react to decline trends in catch. The simulation studies shows strong negative correlations in the estimation process between catchability ($a$) and selectivity parameters suggesting that un-accounted shift in selectivity will affect the estimate of catchability.\\
+
+Further, it is probably easier to disantangle the effect of an increasing selectivity function and a decreasing survivor but when the selectivity is best described by a domed shaped function (a large escapement of old fish), the declining number of old fishes observation will be explained equally well by increasing harzard as declining selectivity. In such cases, it is very possible that age data alone will not allow to estimate all parameters of increase with a good enough precision and that we will need to collect additional data to disantangle the confounded variables. Experimental sampling with various gear could provide data with sufficient contrast to solve the problem of non-identifiability but the cost of these experiment are prohibitive. On the other hand, fishery using a range of gear might be better equipped to deal with this problem.\\
+
+In the analysis of mullet dta, selectivity is bound to vary between 0 and 1 in the likelihood optimization procedure. This complicates the estimation compared to the simulated study as discussed in the discussion section. We are planning to use a better optimization library in the future to deal with this problem. Our past and current research as shown that the optimization library developed at CERN (\url{www.cern.ch/minuit}) should unable us to investigate further this question raised by this reviewer.\\
+
+
+\noindent {\bf 2.      The results of AIC in table 2 do not seem to be right. Please check the calculation and clarify it in the manuscript.} \\
+The figures were changed to 1 decimal place to clarify the calculation (AIC =$-2 {\rm log}(\mathcal{L}) + 2p$). The caption of table 3 was improved to clarify this point. \\
+ 
+\noindent {\bf 3.      In table 4, the notation (e.g. e-5) are confusing. Suggest to use parentheses there.} \\
+Done. \\
+
+\end{spacing}
+
+%\hline
+\vspace{3cm}
+
+%\noindent Marco Kienzle\\
+%Dept of Agriculture, Fisheries and Forestry of the Govt of Queensland\\ 
+%Level A2, Ecosciences Precinct, Joe Baker St\\ 
+%Dutton Park  QLD-4102\\
+%Australia \\
+%Telephone 07 3255 4227 Fax 3846 1207\\ 
+%Email Marco.Kienzle@daff.qld.gov.au\\ 
+%29 Kamarin st\\
+%Manly-West QLD-4179\\
+%Australia\\
+%Email: Marco.Kienzle@gmail.com\\
+%Phone: +61 4 05795090 \\ \\
+
+\end{document}

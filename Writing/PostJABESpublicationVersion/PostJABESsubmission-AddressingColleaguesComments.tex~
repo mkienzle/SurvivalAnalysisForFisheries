@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+\usepackage{verbatim}
+\usepackage{html}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{natbib}
+\pagestyle{myheadings}
+\markright{Post publication DAF internal review}
+
+%\setlength{\oddsidemargin}{.1375in}
+%\setlength{\evensidemargin}{.1375in}
+\setlength{\oddsidemargin}{.15cm}
+\setlength{\evensidemargin}{.15cm}
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{24cm}
+
+\setlength{\headsep}{0.9cm}
+\setlength{\jot}{0.4cm}
+\setlength{\topsep}{0.6cm}
+
+\flushbottom
+
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup} 
+
+\long\def\symbolfootnotemark[#1]{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnotemark[#1]\endgroup} 
+
+\thispagestyle{empty}% Remove page numbering
+
+\begin{document}
+
+\begin{spacing}{1.2} 
+\hspace{9cm} Brisbane, on the 10$^{th}$ March 2016 \\ \\
+
+\noindent To whom may be concerned \\
+
+We received comments on a paper \citep{Kienzle2015} recently published in the Journal of Agricultural, Biological and Environmental Statistics (JABES) from 2 scientists working in DAF. As a courtesy, we are reminding to our colleagues that this manuscript has been extensively circulated to all fisheries researchers we know in Brisbane, including those in DAF. Had these comments been made before submitting the manuscript to the JABES, they would have been considered for inclusion in the submitted manuscript. The two reviewers's comments have been addressed below point by point. For reviewer 2, we would like to draw your attention to the fact that the comments were hastly hand-written on a paper copy of the publication during a technical session and are difficult to read: there might be discrepancies between this reviewer's comments and their reproduction below; in case errors creeped in the text below, we will certainly address a newly submitted set of comments. \\
+
+We are taking this opportunity to thank our colleagues in DAF for commenting on \cite{Kienzle2015}. \\
+
+\noindent Regards,\\
+\noindent M. Kienzle \\
+\vspace{0.2cm}
+
+{\bf Reviewer 1 (G. Leigh) provided written in an email, dated from the 4/3/2016, which were reproduced below. We addressed each comment point by point}\\
+
+\noindent{\bf In principle it is beneficial to account for annual recruitment variation in catch-curve analysis.  The published paper, however, has three fundamental problems:
+
+\noident{ \bf 1. The theory is not new.  It is already well known to fisheries scientists, just not under the names “survival analysis” or “hazard functions”.  I don’t have time to look up the best references to existing knowledge.}\\
+It would be greatly appreciated if this reviewer could make the time to provide the references he has in mind. The fact that the method allowed to estimate natural mortality for sea mullet for the first time from data collected in Australia suggests that it is novel. Moreover, the editorial board of JABES, including 2 reviewers, have a diverging opinion given that they accepted the manuscript for publication. \\
+
+\noindent{\bf 2. Important equations in the paper are incorrect.  As a point of principle I do not have confidence in authors’ code or make the time to check over it when the documented equations are incorrect.}\\
+More precise comments about equations have been addressed below. We regard as unfortunate that this review has set his mind to look only as part of the material that was provided for him to review: the computer code is an implementation of the method described in the paper that allow to estimate mortality rates in practice. Since the software has been extensively tested and shown to provide correct answer when applied to simulated data, we find regretable that this reviewer omitted to evaluate this essential component for the review of the present work. \\
+
+\noindent{\bf 3. The paper claims to do things that are not possible in real life due to inaccuracies in the input data.  The reason that fisheries scientists don’t use such methods is because they are not practical, not because scientists don’t know about them.} \\
+This comment in vague. What the reviewer refer to as "things" could be specified better.\\
+
+\noindent{\bf The JABES referees obviously did not examine the equations in detail, were not familiar with fisheries mortality models, and had little or no knowledge of the uncertainties in input data that arise in fisheries problems.  They also failed to enforce the use of original references for methodology, e.g., work by authors such as Baranov and Gulland and an appropriate reference to the “plus group” which long predates the 2013 Pawitan reference (above equation (7)).  Unfortunately papers often receive better reviews when they cite recent references (whose authors don’t deserve the credit) instead of original references; JABES seems to be perpetuating this practice.} \\
+We have no knowledge of who the JABES's reviewers were. Therefore we are not in a position to comment on the statement above. We would be delighted to receive more information from G. Leigh if he knows who the reviewers were. And whether their qualifications were appropriate to reviewing this paper. \\
+ 
+\noindent{\bf Specific comments on the equations and other mathematical details:}
+\begin{itemize}
+\item {\bf Equations (1) to (4) are very well known and do not need to be derived.}
+\end{itemize}
+The work was written has a introduction to statistical methods to perform a specific task for the Long Term Monitoring Program (LTMP). Staff in the LTMP have none or little knowledge in statistics. There, the author wrote a step by step manual to bring them from "baby steps" to "grown up walk". The purpose was to explain every detail of the theory for people to evaluate. \\
+
+\noindent{\bf Equation (5) is incorrect.  The variables Si are not defined properly and do not take account of different sampling effort in different years.  (Also the variable n is not defined but obviously represents the number of age classes.)  Marco stated at the meeting that he defined the sample in the same way as in the section on simulations (section 2.4).  That needs to be stated in section 2.1.  In any case, that strategy invalidates the multinomial likelihood (5) because different weighting factors have to be applied to samples from different years (although in most cases I don’t expect that to make a big difference to the results).  Other complicating factors that are not addressed include the following:} \\
+Eq. (5) implements the definition of likelihood as presented in \citep{edwards1992likelihood} or \citep{pawitan2013all}.
+\begin{itemize}
+\item Catch sizes are usually measured in weight, not numbers of animals.
+\item Sampling procedures usually have two stages.  A larger sample of fish is measured for length while only a smaller sample is aged.
+\item Equations (6) and (7) are very well known.
+\item Equation (8) is theoretical only.  In practice the effective fishing effort is very difficult to quantify and subject to high uncertainty, and it is not possible to use this equation to find meaningful estimates of M and q in catch-curve analysis.  Also the natural mortality rate M may vary with time.  Separation of M and q relies very heavily on the assumptions that M is constant over all years and that fishing effort E is accurately specified.
+
+\item Equations (9) to (13) are unnecessarily complicated.  They amount to simply standardising probability density (i.e., making it integrate to 1).
+
+\item Equation (14) is incorrect.  It uses the same symbol t for both age and time.  Selectivity s(t) should be a function of age, while effort E(t) should be a function of time.  The variables sk,l and Ek,l in the denominator are not defined.
+
+\item Equations (15) and (16) are subject to the same problems as equation (5).
+
+\item Table 1 does not state whether the listed variables vary with time, age or both.
+
+\item In equation (18) the fancy operator symbols are meaningless in this context.  It should be stated as a matrix multiplication.
+
+\item The last paragraph of section 2.5 does not state the model for different catchabilities between estuary and ocean.  It looks like equation (8) gets generalised to try to estimate the three parameters M, qestuary and qocean , which is even less feasible than the original equation (8) which estimates M and q.
+
+\item Table 2 does not state the definition of effort.  I presume that it is a count of fisher-days on which any mullet were caught, but this is not stated.  Such a count constitutes “raw effort” which is often not a good proxy for effective effort.  For example, efficient fishers often stay in fisheries while inefficient ones drop out, thereby increasing the value of a day of raw effort over the years.  Also with mullet there is the particular problem that most of the effort is actually search time, not active fishing time, and search time is not recorded.
+
+\item The paragraph below Figure 1, and subsequent text, persist in using the terms “survival analysis” for the method used in the paper, and “multinomial likelihood” for the comparison method, which is misleading.  In fact the “survival analysis” method is also multinomial; e.g., equation (5) is a multinomial distribution.
+\end{itemize}
+ 
+The things that are impossible in real life are to accurately quantify fishing effort, to meaningfully estimate both M and q from the available data, and hence to separate M and F.
+
+
+{\bf Reviewer 2 (A. Campbell) provided written comments on a paper copy of \citep{Kienzle2015} on 3/3/2016 that were reproduced (transcription from hand-writing might have occurred). We addressed each comment point by point}\\
+
+\noindent{\bf General comments} \\
+\vspace{3cm}
+
+\noindent{\bf 1. Nominal/effective effort} \\
+This reviewer and other colleagues have expressed their dissatisfaction that the manuscript focusing on estimating mortality rate from age data does not include a section dealing nominal/effective effort and fishing power analysis. This topic is beyond the scope of this manuscript. The method presented in this manuscript can be used to create an alternative model to the 3 presented for sea mullet that would include an effective time series of effort as desired by this and other colleagues. \\
+
+\noindent{\bf 2. Sampled - population age theory} \\
+Element of sampling theory, in particular whether samples have to be weighted or not by catch to obtain an unbiased estimator of mortality has been presented in section 2.4. The process of sampling fish population, and associated theory, are certainly relevant to this method that use samples of catch to infer the mortality rate affecting a fish population. \\
+
+\noindent{\bf Specific comments} \\
+
+\noindent {\bf 1. Eq. 1: i not p}\\
+We couldn't understand the meaning of this comment: we interpret this as a jargon used in between our colleagues, which we would benefit from being clarified. Is the reviewer stating that constant mortality rates, M and F, should have an index i ?\\
+
+\noindent {\bf 2. below Eq. 1 ("The probability density function (pdf)..." - only for p. Not fully specified pdf}\\
+The review probably refers to Eq.2 which describes the pdf, as derived from survival analysis, when both M and F are constant. We refer this reviewer to \cite{cox84b} for more details.\\
+
+\noindent {\bf 3. above Eq. 3 - I think can't add but can't tell because sample space is not clear} \\
+In the beginning section of materials and methods, we specified that $t \in [0;+\infty]$. Age is measured recorded into age-groups. So the sample space is $[0;+\infty]$ binned into age-groups.\\
+
+\noindent {\bf 4. above Eq. 5 - number ? How is this arrived at ? }\\
+Yes, the number of fish belonging to a particular age category as measured using otoliths by the LTMP. Details about this were provided in the paragraph at the beginning of the materials and methods section.\\
+
+\noindent {\bf 5. below Eq. 5 - Should be multinomial ?}\\
+Yes, you could call this multinomial. \\
+
+\noindent {\bf 6. Eq. 6 - F not constant } \\
+The title of the section containing Eq. 6 reads "The likelihood for constant natural and fishing mortality rates". Therefore, this comment shows that the reviewer is unaware of the premises to the mathematical development presented in this section. \\
+
+\noindent {\bf 7. Eq. 6 - what ? should be $\frac{F}{F+M} \rm{e}^{...}$ } \\
+We refer this review to the mathematical development in Eq. 4. \\
+
+\noindent {\bf 9. Eq. 9 - This doesn't make sense: confating deterministic with prob.} \\
+We can't understanding the meaning of this comment: please, rephrase.\\
+
+\noindent {\bf 10. Eq. 11 - Not E(a). Confating and and time \label{lab:a}} \\
+We think that this reviewer has a matrix of time at age (typically year x age) in mind because he sees an imprecision in the use of the time variable ($t$) where he would like to see age ($a$). We remind this reviewer that Eq. 11 is in section 2.2, where the paper deals with a single cohort, therefore time and age are the same variable. By re-reading the manuscript, it became evident that the progression from section 2.1 to 2.2 did not mention in section 2.2 that this section deal with a single cohort. The indices of $S$ could have given the reader a hint. \\
+
+\noindent {\bf 11. Eq. 14 - What to see now derived }\\
+The meaning of this comment is not very clear. We suspect that this reviewer is happy with Eq. 14 as it is close to his modelling practice of dealing with matrices of catch at age (section 2.3). \\
+
+\noindent {\bf 12. Eq. 19 - Bring to section 2.1 - Develop sampling part of theory} \\
+The paper has already been published in JABES - we can't do this sort of modification to the text anymore. \\
+
+{\bf Reviewer 2 (G. Leigh) has provided oral comments at the technical meeting held in 3/3/2016 which we transcribed from our notes (transcription might have been inaccurate). We addressed each comment point by point}\\
+
+\noindent{\bf Specific comments} \\
+\noindent {\bf 1. - Effort is not available for stock assessment} \\
+Although, we understand that this might be the experience of this reviewer, the manuscript focused on Qld sea mullet for which effort is available. Hence it seems a reasonable approach to develop model using this information, if for nothing else than comparing with models that do not use this information. On a similar comment that stated that we did not use the correct measure for effort, we are offering this reviewer to build a model with the measure of effort he sees being correct and compare this model to all models, 3 for the moment, available for sea mullet. \\
+
+\noindent {\bf 2. - Conflation between time and age} \\
+If this reviewer refers to section 2.1 and 2.2 as the previous reviewer, we refer you to comment 11 from the previous reviewer (p.~\pageref{lab:a}).\\
+
+\noindent {\bf 3. - This reviewer stated that the manuscript is incorrect and was accepted for publication in JABES because of the incompetence of the editor and 2 reviewers in this area of research.}
+Could this reviewer provide evidences of the incompetence of the editor and reviewers at JABES in the field of survival analysis applied to fisheries research ?
+
+\end{spacing}
+%\Section*{REFERENCES}
+\bibliographystyle{plainnat}
+%%\bibliography{<your-bib-database>}
+\bibliography{Biblio}
+
+%\hline
+%\vspace{3cm}
+
+%\noindent Marco Kienzle\\
+%Dept of Agriculture, Fisheries and Forestry of the Govt of Queensland\\ 
+%Level A2, Ecosciences Precinct, Joe Baker St\\ 
+%Dutton Park  QLD-4102\\
+%Australia \\
+%Telephone 07 3255 4227 Fax 3846 1207\\ 
+%Email Marco.Kienzle@daff.qld.gov.au\\ 
+
+\end{document}

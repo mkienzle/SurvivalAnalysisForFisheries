@@ -1,0 +1,9 @@
+# 10 March 2016
+
+
+source("SimulationFunctions.R")
+
+
+set.seed(1)
+tmp2 <- SamplingStrategy2withCorrection(max.age = combination.of.par$max.age[i], nb.of.cohort = combination.of.par$nb.of.cohort[i], n.sample.per.year=combination.of.par$n.sample.per.year[i], verbose = FALSE)
+

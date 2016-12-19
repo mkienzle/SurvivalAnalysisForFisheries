@@ -1,0 +1,5 @@
+# 25 November 2014
+
+nb.at.age.sample <- read.csv("../Data/FournierEtArchibald1982-Table9.csv", row.names = 1)
+effort.tmp <- read.table("../Data/effort.csv")
+effort <- outer(effort.tmp, rep(1, ncol(nb.at.age.sample)))

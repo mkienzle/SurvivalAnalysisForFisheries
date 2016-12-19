@@ -1,0 +1,105 @@
+%  This document must be used with LaTeX 2e!!!
+
+%  See the documentation ``The biometrics class'' by
+%  Josephine Collis for more information
+
+%  Be sure to put the files biometrics.sty and biometrics.bst
+%  in the same directory as your latex file.  Also put the .bib
+%  file -- see below
+
+\documentclass[12pt]{article}
+
+\usepackage{biometrics2}
+%\usepackage{natbib}
+\usepackage{amsmath,epsfig,epsf,psfrag}
+%\usepackage{a4wide,amsmath,epsfig,epsf,psfrag}
+\usepackage[nolists]{endfloat}
+
+%  put your commands here
+
+\def\be{{\ensuremath\mathbf{e}}}
+\def\bx{{\ensuremath\mathbf{x}}}
+\def\bthet{{\ensuremath\boldsymbol{\theta}}}
+\newcommand{\VS}{V\&S}
+\newcommand{\tr}{\mbox{tr}}
+
+\begin{document}
+
+%  make sure that the document has 25 lines per page (it is 12 pt)
+
+\setlength{\textheight}{575pt}
+\setlength{\baselineskip}{23pt}
+
+%  IMPORTANT -- place the \title, \author, etc, \begin{summary}...
+%  \end{summary} \keywords statements in the order demonstrated below
+
+\title{Hazard function models to estimate mortality rates affecting fish populations by maximum likelihood using age data,\\ with application to the sea mullet ({\it mugil cephalus}) fishery on the Queensland coast (Australia)}
+
+%\author{}
+%% \address{
+%%  Department of Excavation,  University of Bedrock, 
+%%  Bedrock, NV 99999, U.S.A.}
+%% \email{flintstone@bedrock.edu}
+
+%% \author{B. Rubble}
+%% \address{
+%% Department of Statistics, Bedrock State University \\
+%%  Bedrock, NV 99999, U.S.A.}
+%\email{brubble@bedrock.edu} 
+% with more than 2 authors, give only one email address
+
+%% \author{M. Slate}
+%% \address{
+%%  Department of Excavation,  University of Bedrock,
+%%  Bedrock, NV 99999, U.S.A.}
+
+%  you can put line breaks in the addresses or not as you choose
+
+%\date{}
+
+
+\maketitle
+
+\begin{summary}
+Fisheries management agencies around the world collect age data for the purpose of assessing the status of natural resources in their jurisdiction. Estimates of mortality rates are a key information to assess the sustainability of exploiting fish stocks. In medical research, failure rates are estimated using survival analysis, a statistical method seldom applied to stock assessment despite having the same goals as those of fisheries research. In this paper, we developed hazard functions to model the dynamic of a fishery. This method estimated all parameters necessary for stock assessment by maximum likelihood, including natural, fishing mortality rates and gear selectivity using age from a sample of fish caught by the fishery. This statistical approach was tested by Monte Carlo simulations to assert that it provided un-biased estimates of relevant quantities. An application to a sample of age from sea mullet ({\it Mugil cephalus}) caught between 2007 and 2014 in Queensland (Australia) provided the first estimate of natural mortality affecting this stock (M=0.22 $\pm$ 0.08 year$^{-1}$).
+\end{summary}
+
+\keywords{Monte Carlo; survival analysis; stock assessment}
+
+\section{Introduction}
+
+\cite{scimar42} and \fullcite{Pollock1989}
+
+%\begin{acknowledgements}
+%\end{acknowledgements}
+
+%\begin{resume}
+%The French version of the summary, if you want to translate it yourself.
+%\end{resume}
+
+%  This will create the references section.  To get this, you need
+%  to use BiBTeX.  First, latex the document; if your latex file
+%  is called example.tex, as this one is, e.g. latex example.
+%  Create the file example.bib (we've already done this; you may
+%  use this file as an example/template).  Then run BiBTeX on this file, e.g.
+%  bibtex example in our case.  Then latex the document TWICE again, e.g. run
+%  latex example TWICE.  Now look at the dvi file -- you will see that
+%  the references in example.bib will have been included in a 
+%  References section in the document in the Biometrics style.  The
+%  file example.bbl will have been created.  The .bib file should
+%  be located in the same directory as your latex file.
+
+\bibliographystyle{/home/mkienzle/texmf/tex/biometrics} \bibliography{Biblio}
+
+% appendices with and without titles and numbers
+
+%% \startappendix
+%% \appendix{Proof of Theorem 1}
+%% This appendix will have a letter (number) and a title
+
+%% \appendix*{}
+%% This appendix has no title or letter (number)
+
+\end{document}
+
+

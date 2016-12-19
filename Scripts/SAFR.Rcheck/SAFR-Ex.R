@@ -218,7 +218,27 @@ result <- optim(par = c(0.1), fn = llfunc1, catch = catch, method = c("L-BFGS-B"
       lower = c(1e-2), upper = c(3), hessian = TRUE)
 print(paste("Estimated Z is", round(result$par,3), "+-", round(sqrt(diag(solve(result$hessian))),3)))
 
+### Estimate of Z using a plus group
+ap <- ifelse( (0.0001 * sum(catch)) < catch[11], 11, min(which(catch < (0.0001 * sum(catch)) )))
+catch1 <- catch[1:ap]; catch1[ap] <- sum(catch[ap:11]) # create the +group
 
+# if the number of observation is large enough so that there is no need to create a +group
+# then do not use the +group option
+ifelse( length(catch) == length(catch1), print("+group option not used"),
+{ 
+result1 <- optim(par = c(0.1), fn = llfunc1, catch = catch1, plus.group = TRUE, method = c("L-BFGS-B"),
+      lower = c(1e-2), upper = c(3), hessian = TRUE)
+print(paste("Estimated Z is", round(result1$par,3), "+-", round(sqrt(diag(solve(result1$hessian))),3)))
+})
+
+print("# An estimate of recruitment")
+# According to Dupont (1983) and Chiang (1968) cohort abundance at t=0 can be estimated by the ratio of total number of individual dying to total probability of dying
+
+#rec.est <- catch / ((result$par[1] - M)/result$par[1]) / (exp(-result$par[1] * #age) - exp(-result$par[1] * (age + 1)) )
+#print(mean(rec.est))
+rec.est <- sum(catch) / ((result$par[1] - M)/result$par[1]) / sum( (exp(-result$par[1] * age) - exp(-result$par[1] * (age + 1)) ))
+print(rec.est)
+print(paste("Compared to N0=", round(N0,3)))
 
 
 
@@ -270,9 +290,19 @@ best.qM.est <- optim(par = c(10,1), fn = llfunc2, catch = catch, effort
 
 errors <- sqrt(diag(solve(best.qM.est$hessian)))
 
+### Estimate recruitment
+# According to Dupont (1983) Biometrics vol. 39 No 4 pp. 1021-1033
+
+est.rec <- sum(catch)/sum(prob.for.llfunc2(best.qM.est$par, effort, csf))
+
+## And not finding a better way to calculate the uncertainty
+ind.rec <- catch / prob.for.llfunc2(best.qM.est$par, effort, csf)
+#est.rec.limits <- c("Lower" = sum(catch)/sum(prob.for.llfunc2(best.qM.est$par - errors, effort, csf)), "Upper" = sum(catch)/sum(prob.for.llf#unc2(best.qM.est$par + errors, effort, csf)))
+
 print(" ##### ")
 print(paste("Estimated catchability is", round(best.qM.est$par[1],3), "+-", round(errors[1],3), as.character(csf)))
 print(paste("Estimated M is", round(best.qM.est$par[2],3), "+-", round(errors[2],3)))
+print(paste("Estimated recruitment is", round(est.rec,0), " ranging from ", round(min(ind.rec),0), " to ", round(max(ind.rec),0)))
 
 
 
@@ -285,23 +315,64 @@ flush(stderr()); flush(stdout())
 
 ### Name: llfunc3
 ### Title: log-likelihood function of catch at age matrix to estimate
-###   catchability, selectivity and natural mortality
+###   catchability, selectivity and natural mortality from a matrix of
+###   catch at age
 ### Aliases: llfunc3
 ### Keywords: misc
 
 ### ** Examples
 
-# Simulate data
+
+# First example, estimate mortality rates assuming selectivity known exactly
 set.seed(3)
 max.age <- 9
-sim <- GenerateData2(max.age = max.age, nb.of.cohort = 30) # Generate catch using gear selectivity
+nb.of.cohort <- 30
+population <- GenerateData2(max.age = max.age, nb.of.cohort = nb.of.cohort) # Generate catch using gear selectivity
+
+# sample a fix number of fish each years
+n.sample.per.year <- 1e3
+nb.at.age.sample <- draw.sample(population$catch, sample.size = n.sample.per.year * (nb.of.cohort + 1 - max.age))
+
 
 # Estimate assuming you know selectivity
-result <- optim(par = c(0.2,1), fn = llfunc3, catch = sim$catch, effort = sim$effort, catchability.scaling.factor = 1e-4, selectivity.at.age =  c(0,0,seq(1/(max.age - 3), (max.age - 4)/(max.age - 3), length = max.age - 4), 1,1), hessian = TRUE)
- errors <- sqrt(diag(solve(result$hessian)))
+result <- optim(par = c(0.2,1), fn = llfunc3, catch = nb.at.age.sample, effort = population$effort, catchability.scaling.factor = 1e-4, selectivity.at.age =  c(0,0,seq(1/(max.age - 3), (max.age - 4)/(max.age - 3), length = max.age - 4), 1,1), hessian = TRUE)
+
+errors <- sqrt(diag(solve(result$hessian)))
 
 print(paste("Estimated catchability is", round(result$par[1],3), "+-", round(errors[1],3), " x 10^-4"))
 print(paste("Estimated M is", round(result$par[2],3), "+-", round(errors[2],3)))
+
+
+# Second example to show how to use a +group
+set.seed(12)
+max.age <- 25
+nb.of.cohort <- 75
+population <- GenerateData2(max.age = max.age, nb.of.cohort = nb.of.cohort) # Generate catch using gear selectivity
+
+# sample a fix number of fish each years
+n.sample.per.year <- 1e3
+nb.at.age.sample <- draw.sample(population$catch, sample.size = n.sample.per.year * (nb.of.cohort + 1 - max.age))
+
+# Estimate assuming you know selectivity
+result <- optim(par = c(0.2,1), fn = llfunc3, catch = nb.at.age.sample, effort = population$effort, catchability.scaling.factor = 1e-4, selectivity.at.age =  c(0,0,seq(1/(max.age - 3), (max.age - 4)/(max.age - 3), length = max.age - 4), 1,1), hessian = TRUE)
+
+errors <- sqrt(diag(solve(result$hessian)))
+
+print(paste("Estimated catchability is", round(result$par[1],3), "+-", round(errors[1],3), " x 10^-4"))
+print(paste("Estimated M is", round(result$par[2],3), "+-", round(errors[2],3)))
+
+# Using a +group
+ap <- 20
+nb.at.age.sample2 <- nb.at.age.sample[,1:ap]; nb.at.age.sample2[,ap] <- rowSums(nb.at.age.sample[,ap:max.age])
+effort2 <- population$effort[,1:ap];
+
+result2 <- optim(par = c(0.2,1), fn = llfunc3, catch = nb.at.age.sample2, effort = effort2, catchability.scaling.factor = 1e-4, selectivity.at.age =  c(0,0,seq(1/(max.age - 3), (max.age - 4)/(max.age - 3), length = max.age - 4), 1,1)[1:ap], plus.group = TRUE, hessian = TRUE)
+
+errors2 <- sqrt(diag(solve(result2$hessian)))
+
+print(paste("Estimated catchability is", round(result2$par[1],3), "+-", round(errors2[1],3), " x 10^-4"))
+print(paste("Estimated M is", round(result2$par[2],3), "+-", round(errors2[2],3)))
+
 
 
 
@@ -319,13 +390,20 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+# without a function for gear selectivity, it is very difficult (impossible) to estimate parameters of interest
+# we need substantially more data
 # Simulate data
 set.seed(3)
 max.age <- 9
-sim <- GenerateData2(max.age = max.age, nb.of.cohort = 30) # Generate catch using gear selectivity
+nb.of.cohort <- 50
+population <- GenerateData2(max.age = max.age, nb.of.cohort = nb.of.cohort) # Generate catch using gear selectivity
+
+# sample a fix number of fish each years
+n.sample.per.year <- 2e3
+nb.at.age.sample <- draw.sample(population$catch, sample.size = n.sample.per.year * (nb.of.cohort + 1 - max.age))
 
 # Estimate parameters
-result2 <- optim(par = c(0.2,1, c(rep(1e-12,5), rep(1, max.age-5))), fn = llfunc4, catch = sim$catch, effort = sim$effort, catchability.scaling.factor = 1e-4, method = c("L-BFGS-B"),
+result2 <- optim(par = c(0.2,1, c(rep(1e-12,5), rep(1, max.age-5))), fn = llfunc4, catch = nb.at.age.sample, effort = population$effort, catchability.scaling.factor = 1e-4, method = c("L-BFGS-B"),
        lower = c(5e-2,5e-2, rep(1e-12, max.age)), upper = c(10,0.5, rep(1, max.age)), hessian = TRUE, control = list(maxit = 1e3))
 errors2 <- sqrt(abs(diag(solve(result2$hessian))))
 
@@ -347,13 +425,20 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+# This likelihood function constrains the selectivity on the last 2 age-groups to 1
+# it doesn't help much to estimate parameters
 # Simulate data
 set.seed(3)
 max.age <- 9
-sim <- GenerateData2(max.age = max.age, nb.of.cohort = 30) # Generate catch using gear selectivity
+nb.of.cohort <- 50
+population <- GenerateData2(max.age = max.age, nb.of.cohort = nb.of.cohort) # Generate catch using gear selectivity
+
+# sample a fix number of fish each years
+n.sample.per.year <- 2e3
+nb.at.age.sample <- draw.sample(population$catch, sample.size = n.sample.per.year * (nb.of.cohort + 1 - max.age))
 
 # Estimate parameters, fixing selectivity for the last 2 age-groups to 1
-result3 <- optim(par = c(0.2,1, rep(1e-12,max.age-2)), fn = llfunc5, catch = sim$catch, effort = sim$effort, catchability.scaling.factor = 1e-4, method = c("L-BFGS-B"),
+result3 <- optim(par = c(0.2,1, rep(1e-12,max.age-2)), fn = llfunc5, catch = nb.at.age.sample, effort = population$effort, catchability.scaling.factor = 1e-4, method = c("L-BFGS-B"),
        lower = c(5e-2,5e-2, rep(1e-12, max.age-2)), upper = c(10,0.5, rep(1, max.age-2)), hessian = TRUE, control = list(maxit = 1e3))
 errors3 <- sqrt(abs(diag(solve(result3$hessian))))
 
@@ -362,6 +447,64 @@ print(cbind("Estimate" = result3$par, "Error" = errors3))
 
 
 
+cleanEx()
+nameEx("llfunc7")
+### * llfunc7
+
+flush(stderr()); flush(stdout())
+
+### Name: llfunc7
+### Title: log-likelihood function of catch at age matrix to estimate
+###   catchability, selectivity [assumed logistic] and natural mortality
+### Aliases: llfunc7
+### Keywords: misc
+
+### ** Examples
+
+max.age <- 9
+nb.of.cohort <- 30
+ 
+population <- GenerateData3(max.age = max.age, nb.of.cohort = nb.of.cohort, verbose = TRUE)
+
+#############################################################################
+# Simulate sampling
+#############################################################################
+
+# sample a fix number of fish each years
+n.sample.per.year <- 2e3
+nb.at.age.sample <- draw.sample(population$catch, sample.size = n.sample.per.year * (nb.of.cohort + 1 - max.age))
+# Estimate assuming you know selectivity
+lower.bound <- c(5e-2,1e-2,1,1);upper.bound <- c(15,1,20,20)
+
+csf <- 1e-4 # catchability scaling factor
+
+result <- optim(par = c(0.2,0.5, 10, 2), fn = llfunc7, catch = nb.at.age.sample, effort = population$effort, catchability.scaling.factor = csf, method = c("L-BFGS-B"),
+       lower = lower.bound, upper = upper.bound, hessian = TRUE)
+errors <- sqrt(diag(solve(result$hessian)))
+
+res <- cbind("Estimate" = result$par, "Errors" = errors);
+dimnames(res)[[1]] <- c("Est. catchability", "Est. natural mort.", "Est. logistic par a", "Est. logistic par b")
+print(res)
+
+# Calculate probability of being caught
+p <- prob.for.llfunc7(result$par, population$catch, population$effort, catchability.scaling.factor = csf)
+
+# An estimate of recruitment
+rec <- rowSums(Caaa2Coaa(population$catch), na.rm = TRUE) / rowSums(p, na.rm = TRUE)
+ind.rec <- Caaa2Coaa(population$catch) / p
+var.ind.rec <- 1/ncol(ind.rec) * rowSums((ind.rec - outer(rec, rep(1, ncol(ind.rec))))^2, na.rm = TRUE)
+
+par(mfrow=c(1,2))
+plot(population$Rec[9:30], rec[9:30]); abline(0,1)
+segments(population$Rec[9:30], rec[9:30] + sqrt(var.ind.rec[9:30]), population$Rec[9:30], rec[9:30] - sqrt(var.ind.rec[9:30]))
+
+plot(1:22, population$Rec[9:30], type = "b", ylim = c(0.9 * min(c(rec[9:30], population$Rec[9:30])), 1.1 * max(c(rec[9:30], population$Rec[9:30]))))
+points(1:22, rec[9:30], type = "b", pch = 19)
+
+
+
+
+graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 cleanEx()
 nameEx("which.cohort")
 ### * which.cohort

@@ -34,14 +34,14 @@ The likelihood \citep{edwards1992likelihood} of a sample of fish caught in the f
             &=& \prod_{i=1}^{n} P_{i} ^ {S_{i}}
 \end{eqnarray}
 
-This is often referred to as the likelihood of a multinomial probability ($P_{i}$) where 
+%This is often referred to as the likelihood of a multinomial probability ($P_{i}$) where 
 
-\begin{eqnarray}
- P_{i} &=& \int_{t=a_{i}}^{t=a_{i+1}} f(t; \theta) \ dt \\
-      &=& e^{[-(M+F) a_{i}]} \bigl ( 1 - e^{[- (M+F) \times (a_{i+1} - a_{i})]}  \bigr )
-\end{eqnarray}
+%\begin{eqnarray}
+% P_{i} &=& \int_{t=a_{i}}^{t=a_{i+1}} f(t; \theta) \ dt \\
+%      &=& e^{[-(M+F) a_{i}]} \bigl ( 1 - e^{[- (M+F) \times (a_{i+1} - a_{i})]}  \bigr )
+%\end{eqnarray}
 
-\noindent is the probability of dying in the interval $[a_{i}; a_{i+1}]$.\\
+\noindent where $P_{i}$ is the probability of dying in the interval $[a_{i}; a_{i+1}]$.\\
 
 The logarithm of the likelihood was
 \begin{eqnarray}
@@ -57,11 +57,11 @@ The log-likelihood can accommodate a last age-group made of all observations abo
 {\rm log}(\mathcal{L}) = \sum_{i=1}^{n-1} S_{i} \ {\rm log} \bigl ( e^{-(M+F) \times a_{i}} - e^{-(M+F) \times a_{i+1}} \bigr ) + S_{n} \ {\rm log} \bigl ( e^{-(M+F) \times a_{n}} \bigr )
 \end{equation}
 
-In cases where sampling does not cover the entire range of age ($ i \notin in [1;n], i \in [a;b]$ with $a > 1$ and $b < n$) for example because younger fish live outside the sampling area, the distribution is truncated ($\sum_{i} P_i < 1$) and using Eq.~\ref{eq:16} would lead to erroneous estimations. In such cases, the relative proportions $p_i=P_{i} / \sum_{i=a}^{b} P_{i}$ are to be used in the likelihood function. Conditional on the total sample $S$ with age between age $a_i$ and $a_{i+1}$, with $i \in [a;b]$, the age frequency of the total sample $S$ follows the following multinominal distribution (up to a constant $S!/S_a! \ ... \ S_b!$) (see \cite{Wang99a})
+%% In cases where sampling does not cover the entire range of age ($ i \notin in [1;n], i \in [a;b]$ with $a > 1$ and $b < n$) for example because younger fish live outside the sampling area, the distribution is truncated ($\sum_{i} P_i < 1$) and using Eq.~\ref{eq:16} would lead to erroneous estimations. In such cases, the relative proportions $p_i=P_{i} / \sum_{i=a}^{b} P_{i}$ are to be used in the likelihood function. Conditional on the total sample $S$ with age between age $a_i$ and $a_{i+1}$, with $i \in [a;b]$, the age frequency of the total sample $S$ follows the following multinominal distribution (up to a constant $S!/S_a! \ ... \ S_b!$) (see \cite{Wang99a})
 
-\begin{equation}
-\mathcal{L} = \prod_{i=a}^{b} p_{i} ^ {S_{i}}.
-\end{equation}
+%% \begin{equation}
+%% \mathcal{L} = \prod_{i=a}^{b} p_{i} ^ {S_{i}}.
+%% \end{equation}
 
 This development illustrated an application of survival analysis to estimate mortality rates affecting a cohort of fish by maximum-likelihood using a sample of catch at age. This method was implemented in R \citep{R} in the package Survival Analysis for Fisheries Research (SAFR) available at \url{https://github.com/mkienzle/SurvivalAnalysisForFisheries}. \\ %provided as supplement material. Numerical application were made available using the following commands: {\bf library(SAFR); example(llfunc1)}.\\
 

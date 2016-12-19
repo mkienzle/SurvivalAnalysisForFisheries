@@ -1,0 +1,42 @@
+\name{EstimateZ}
+\alias{EstimateZ}
+\title{Estimate total mortality (Z) using catch at age from a single cohort}
+\description{
+  This function provide an estimate of total mortality (Z) by maximum
+  likelihood using a vector of catch at age from a cohort for each age
+  group from 0 to max.age}
+\usage{EstimateZ(catch)}
+\arguments{
+  \item{catch}{is a vector of numerics describing the number of fish
+    caught in each yearly age-group. The first value reprensent fishes
+ caught}
+}
+\references{
+  Quinn and Deriso (1999) - Quantitative Fish Dynamics
+}
+\examples{
+# Suppose age varies between 0 and 10
+age = seq(0,10)
+
+# Suppose you have a M=0.105, F and N0 are arbitrary (randomly generated)
+M <- 0.105
+F <- runif(1, min = 0.1, max = 3)
+print(paste("Simulated Z is", round(M+F,3)))
+
+# Generate a random recruitment
+N0 <- runif(1, min = 1e3, max = 1e4)
+print(paste("Simulated recruitment", round(N0)))
+
+# Calculate number at age using a simple exponential model ( see Quinn and Deriso, 1999)
+nb.at.age <- cbind(age, N0 * exp(-(M+ F)) ^ age)
+
+# Calculate the total number of individual dying at age
+total.death <- N0 * (exp(-(M+F) * age) - exp(-(M+F) * (age+1)))
+
+# And the fraction dying from fishing 
+catch <- F/(M+F) * total.death
+
+# Estimate Z
+best.Z.est <- EstimateZ(catch)
+}
+\keyword{misc}

@@ -1,0 +1,56 @@
+%  This document must be used with LaTeX 2e!!!
+
+%  See the documentation ``The biometrics class'' by
+%  Josephine Collis for more information
+
+%  Be sure to put the files biometrics.sty and biometrics.bst
+%  in the same directory as your latex file.  Also put the .bib
+%  file -- see below
+
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+%\usepackage{biometrics2}
+\usepackage[round]{natbib}
+\usepackage{amsmath,epsfig,epsf,psfrag}
+%\usepackage{a4wide,amsmath,epsfig,epsf,psfrag}
+\usepackage[nolists]{endfloat}
+
+% Additional packages
+\usepackage{lineno}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{rotating}
+
+%  put your commands here
+
+\def\be{{\ensuremath\mathbf{e}}}
+\def\bx{{\ensuremath\mathbf{x}}}
+\def\bthet{{\ensuremath\boldsymbol{\theta}}}
+\newcommand{\VS}{V\&S}
+\newcommand{\tr}{\mbox{tr}}
+
+% more commands
+\DeclareDelayedFloatFlavor{sidewaystable}{table}
+
+\begin{document}
+
+\linenumbers
+
+%  make sure that the document has 25 lines per page (it is 12 pt)
+
+\setlength{\textheight}{575pt}
+\setlength{\baselineskip}{23pt}
+
+%  IMPORTANT -- place the \title, \author, etc, \begin{summary}...
+%  \end{summary} \keywords statements in the order demonstrated below
+
+\title{Hazard function models to estimate mortality rates affecting fish populations with application to the sea mullet ({\it Mugil cephalus}) fishery on the Queensland coast (Australia)}
+
+\author{Marco Kienzle\footnote{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia; \newline University of Queensland, School of Agriculture and Food Sciences, St. Lucia, QLD 4072, Australia}}
+
+%\address{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia; University of Queensland, School of Agriculture and Food Sciences, St. Lucia, QLD 4072, Australia}
+
+\maketitle
+\end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.1.27)  26 MAY 2015 07:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.1.27)  2 JUN 2015 17:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -276,18 +276,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--62
 
  []
 
-(./Generalities.tex
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[2] (./Generalities.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
-[2]) (./ConstantNaturalAndFishingMortality.tex
+) (./ConstantNaturalAndFishingMortality.tex
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
@@ -344,12 +344,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
  []
 
-)
-Underfull \hbox (badness 10000) in paragraph at lines 22--75
-
- []
-
-(./SimulationTesting.tex
+) (./SimulationTesting.tex
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
@@ -357,29 +352,28 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
  [7]
-Underfull \hbox (badness 10000) in paragraph at lines 20--22
+Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
 
-)
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
- [8] (./SeaMulletData.tex
+) (./SeaMulletData.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+[8]
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5--6
+Underfull \hbox (badness 10000) in paragraph at lines 5--7
 
  []
 
@@ -452,27 +446,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--13
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
 
+)
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
-
- []
-
-) (./acknowledgement.tex)
+ [12] (./acknowledgement.tex)
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
@@ -498,11 +483,11 @@ Missing character: There is no ” in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [15]
+
+[15]
 File: ../Results/Graphics/Estimating-NaturalMortality.ps Graphic file (type eps
 )
-
-<../Results/Graphics/Estimating-NaturalMortality.ps>
+ <../Results/Graphics/Estimating-NaturalMortality.ps>
 Overfull \hbox (1.7216pt too wide) in paragraph at lines 109--110
 [][] 
  []
@@ -541,25 +526,19 @@ Missing character: There is no ” in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [18] (./Tables/SimulationParameters.tex) (./Tables/Mullet-NbAtAge.tex
-Overfull \hbox (58.2789pt too wide) in paragraph at lines 5--18
- [][] 
- []
-
-)
+ [18] (./Tables/SimulationParameters.tex)
+(./Tables/Mullet-NbAtAgeEDITED.tex)
+(/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
+ables/MulletModelComparisonEDITED.tex)
+(/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
+ables/BestParameterEstimatesEDITED.tex)
 (/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
 ables/MaximumLikelihoodProbabilitiesOfMulletAgeSampleWeightedByTotalCatch.tex
-Overfull \hbox (143.22395pt too wide) in paragraph at lines 5--19
+Overfull \hbox (23.89032pt too wide) in paragraph at lines 5--19
  [][] 
  []
 
 )
-(/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
-ables/Sensitivity-CatchabilityToMulletDataTruncation.tex)
-(/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
-ables/Sensitivity-NaturalMortalityToMulletDataTruncation.tex)
-(/home/mkienzle/mystuff/Work/DEEDI/Biometry services/Fisheries/Mullet/Results/T
-ables/EffectOfWeightingOnMulletEstimates.tex)
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
@@ -589,32 +568,18 @@ Missing character: There is no ” in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [22]
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
- [23]
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
- [24]
-(./DefinitionsOfMathematicalSymbols.tex
+ [22] (./DefinitionsOfMathematicalSymbols.tex
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 7.
- (./Tables/Cohorts.tex)
+
+(./Tables/Cohorts.tex)
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [25
+ [23
 
 ])
 Missing character: There is no â in font cmr10!
@@ -623,15 +588,18 @@ Missing character: There is no ” in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [26]
-(./Kienzle-SurvivalAnalysis.aux) ) 
+ [24] (./Kienzle-SurvivalAnalysis.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2734 strings out of 495029
- 37168 string characters out of 6181523
- 109527 words of memory out of 5000000
- 5847 multiletter control sequences out of 15000+600000
+ 2727 strings out of 495029
+ 36668 string characters out of 6181523
+ 117415 words of memory out of 5000000
+ 5843 multiletter control sequences out of 15000+600000
  11672 words of font info for 42 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 34i,15n,43p,1327b,419s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,15n,43p,1423b,420s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Kienzle-SurvivalAnalysis.dvi (26 pages, 94856 bytes).
+Output written on Kienzle-SurvivalAnalysis.dvi (24 pages, 91920 bytes).

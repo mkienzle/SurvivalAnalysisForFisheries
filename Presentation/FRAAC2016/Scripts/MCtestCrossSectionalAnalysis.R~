@@ -1,0 +1,7 @@
+# CREATED 22 May 2015
+
+# PURPOSE test the capacity of cross sectional analysis to estimate total mortality (Z) for a range of age-groups
+
+source("../../../Scripts/UsefulFunctions.R")
+
+GenerateData2()

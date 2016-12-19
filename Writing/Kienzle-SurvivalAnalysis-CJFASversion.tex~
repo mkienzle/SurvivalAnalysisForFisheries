@@ -1,0 +1,58 @@
+\documentclass{nrc2}
+\journalcode{cjfas}
+
+\usepackage[english]{babel}
+\usepackage{lineno}
+
+\usepackage{natbib}
+%\usepackage{cite}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+\linenumbers
+\renewcommand{\baselinestretch}{1.2} % set space between lines to 1.5
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Maximum likelihood estimates of mortality rates from catch at age data using survival analysis}
+
+\author{Marco Kienzle}
+\correspond{Marco.Kienzle@daff.qld.gov.au}
+\address[label1]{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia; \newline University of Queensland, School of Agriculture and Food Sciences, St. Lucia, QLD 4072, Australia}
+
+\author{Jason McGilvray}
+\address[label2]{Queensland Dept of Agriculture, Fisheries and Forestry, Ecosciences Precinct, Joe Baker St, Dutton Park, Brisbane, QLD 4102, Australia}
+
+\author{You-Gan Wang}
+\address[label3]{University of Queensland, Centre for Applications in Natural Resource Mathematics, School of Mathematics and Physics, St. Lucia, QLD 4072, Australia}
+
+\begin{abstract}
+\input{abstract.tex}
+\keywords{survival analysis, maximum likelihood, age data, natural mortality, catchability, sea mullet}
+\end{abstract}
+
+%\begin{resume}
+%WRITE ABSTRACT IN FRENCH
+%\end{resume}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Introduction} \input{introduction.tex}
+
+\section{Materials and methods} 
+
+\input{Generalities.tex}
+
+\subsection{The likelihood for constant natural and fishing mortality rates} 
+           \input{ConstantNaturalAndFishingMortality-CJFASformat.tex}
+
+\newpage
+%% Bibliography
+\input{Kienzle-SurvivalAnalysis.bbl}
+
+%\bibliography{a-JLong,Biblio}
+%\bibliographystyle{plainnat}
+
+\end{document}

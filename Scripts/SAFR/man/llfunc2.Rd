@@ -57,9 +57,19 @@ best.qM.est <- optim(par = c(10,1), fn = llfunc2, catch = catch, effort
 
 errors <- sqrt(diag(solve(best.qM.est$hessian)))
 
+### Estimate recruitment
+# According to Dupont (1983) Biometrics vol. 39 No 4 pp. 1021-1033
+
+est.rec <- sum(catch)/sum(prob.for.llfunc2(best.qM.est$par, effort, csf))
+
+## And not finding a better way to calculate the uncertainty
+ind.rec <- catch / prob.for.llfunc2(best.qM.est$par, effort, csf)
+#est.rec.limits <- c("Lower" = sum(catch)/sum(prob.for.llfunc2(best.qM.est$par - errors, effort, csf)), "Upper" = sum(catch)/sum(prob.for.llf#unc2(best.qM.est$par + errors, effort, csf)))
+
 print(" ##### ")
 print(paste("Estimated catchability is", round(best.qM.est$par[1],3), "+-", round(errors[1],3), as.character(csf)))
 print(paste("Estimated M is", round(best.qM.est$par[2],3), "+-", round(errors[2],3)))
+print(paste("Estimated recruitment is", round(est.rec,0), " ranging from ", round(min(ind.rec),0), " to ", round(max(ind.rec),0)))
 
 }
 \keyword{misc}

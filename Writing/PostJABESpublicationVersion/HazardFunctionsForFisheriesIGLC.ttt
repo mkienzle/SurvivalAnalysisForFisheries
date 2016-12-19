@@ -1,0 +1,123 @@
+\begin{table}[ht]
+\centering
+\begin{tabular}{llll}
+  \hline
+Variable type & Distribution & Parameters & Characteristic \\
+  \hline
+recruitment               & uniform & min=$10^{6}$, max=$10^{7}$ & varies by cohort  \\
+natural mortality         & uniform & min=0.1, max=0.8 & constant \\
+catchability              & uniform & min=$10^{-4}$, max=$10^{-3}$ & constant \\
+fishing effort            & uniform & min=$10^{3}$, max=$5 \times 10^{3}$ & varies by year  \\
+gear selectivity $\alpha$ & uniform & min=8, max=12 & constant     \\
+gear selectivity $\beta$  & uniform & min=1, max=3 & constant       \\
+   \hline
+\end{tabular}
+\caption{Distribution and range of value taken by different type of random variable in simulations.}
+\label{tab:SimulationParameters.tex}
+\end{table}
+\efloatseparator
+ 
+\begin{sidewaystable}[ht]
+\tiny
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c||c||c|}
+\hline
+& \multicolumn{19}{|c|}{Estuaries} \\
+\hline
+ & 0--1 & 1--2 & 2--3 & 3--4 & 4--5 & 5--6 & 6--7 & 7--8 & 8--9 & 9--10 & 10--11 & 11--12 & 12--13 & 13--14 & 14--15 & 15--16 & 16--17 & Catch & Effort \\
+  \hline
+2007 & 8 & 144 & 298 & 233 & 23 & 44 & 17 & 6 & 2 &  &  &  &  &  &  &  &  & 792 & 6834 \\
+  2008 &  & 25 & 242 & 265 & 144 & 42 & 22 & 4 & 2 &  &  &  &  & 1 &  &  &  & 1089 & 7228 \\
+  2009 &  & 85 & 131 & 332 & 88 & 39 & 9 & 3 & 1 & 1 & 1 &  &  & 1 &  &  &  & 950 & 6045 \\
+  2010 & 2 & 180 & 306 & 133 & 87 & 29 & 19 & 3 & 4 &  &  &  &  &  &  &  &  & 827 & 5640 \\
+  2011 & 4 & 176 & 409 & 236 & 38 & 15 & 11 & 5 &  & 1 &  &  &  &  & 1 &  &  & 737 & 5852 \\
+  2012 & 1 & 83 & 437 & 253 & 108 & 23 & 8 & 3 & 4 &  &  &  &  &  &  &  &  & 938 & 6527 \\
+  2013 &  & 76 & 290 & 515 & 250 & 73 & 10 & 6 & 1 &  &  &  &  &  &  &  &  & 1152 & 6083 \\
+  2014 & 2 & 47 & 211 & 227 & 186 & 78 & 18 & 5 &  &  &  &  &  &  &  &  & 1 & 645 & 4777 \\
+\hline
+& \multicolumn{19}{|c|}{Ocean} \\
+\hline
+  2007 & 3 & 36 & 219 & 328 & 95 & 61 & 28 & 18 & 9 & 3 &  &  &  &  &  &  &  & 559 & 566 \\
+  2008 &  & 17 & 226 & 353 & 265 & 58 & 35 & 17 & 8 & 8 & 2 & 2 &  & 1 &  &  &  & 706 & 647 \\
+  2009 & 1 & 25 & 149 & 347 & 163 & 112 & 20 & 14 & 5 &  & 2 & 2 & 1 &  &  &  &  & 865 & 484 \\
+  2010 &  & 59 & 235 & 117 & 113 & 68 & 31 & 8 & 5 & 2 &  &  &  &  &  &  &  & 930 & 469 \\
+  2011 & 2 & 68 & 189 & 264 & 77 & 56 & 24 & 5 & 2 & 3 &  & 1 & 1 &  &  & 1 &  & 805 & 560 \\
+  2012 &  & 16 & 196 & 310 & 190 & 34 & 24 & 12 & 7 &  &  &  &  &  &  &  &  & 711 & 467 \\
+  2013 &  & 13 & 115 & 440 & 282 & 110 & 15 & 18 & 4 &  &  &  &  & 1 &  &  &  & 857 & 578 \\
+  2014 &  & 40 & 139 & 232 & 355 & 131 & 40 & 6 & 4 &  &  &  &  &  &  &  &  & 813 & 441 \\
+   \hline
+\end{tabular}
+\caption{Distribution of yearly samples (in rows) of sea mullet into age-groups of width 1 year (in columns) in the estuaries and ocean habitats; catch in tonnes and effort in number of days.}
+\label{tab:Mullet-NbAtAge}
+\end{sidewaystable}
+\efloatseparator
+ 
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+Model & $p$ & $-{\rm log}(\mathcal{L})$ & AIC \\
+  \hline
+   2 & 17 & 18795.3 & 37624.6 \\
+   3 & 31 & 18787.7 & 37637.4 \\
+   1 & 16 & 18817.7 & 37667.4 \\
+   \hline
+\end{tabular}
+\caption{Comparison between the log-likelihood value obtained for several hazard function models of the mullet data using different numbers of parameters ($p$). The models were ordered by increasing values of Akaike Information Criteria (AIC =$-2 {\rm log}(\mathcal{L}) + 2p$) from top to bottom.}
+\label{tab:MulletModelComparison}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll}
+  \hline
+Parameters & Estimates \\
+  \hline
+q$_{\rm{estuaries}}$ & (4.527 $\pm$ 1.026) $\times 10^{-5}$\\
+  q$_{\rm{ocean}}$ & (7.243 $\pm$ 1.142) $\times 10^{-4}$\\
+  M & 0.219 $\pm$ 0.082 \\
+  $s_{1}$ & 0.002 $\pm$ $2 \times 10^{-6}$ \\
+  $s_{2}$ & 0.08 $\pm$ 0.011 \\
+  $s_{3}$ & 0.374 $\pm$ 0.016 \\
+  $s_{4}$ & 0.771 $\pm$ 0.045 \\
+  $s_{5}$ & 0.993 $\pm$ 0.07 \\
+  $s_{6}$ & 1.000 $\pm$ 0.056 \\
+  $s_{7}$ & 1.000 $\pm$ 0.021 \\
+  $s_{8}$ & 1.000 $\pm$ 0.111 \\
+  $s_{9}$ & 1.000 $\pm$ 0.195 \\
+  $s_{10}$ & 0.905 $\pm$ 0.326 \\
+  $s_{11}$ & 0.904 $\pm$ 0.503 \\
+  $s_{12}$ & 0.905 $\pm$ 0.389 \\
+  $s_{13}$ & 0.905 $\pm$ 0.528 \\
+  $s_{14}$ & 1.000 $\pm$ 0.661 \\
+   \hline
+\end{tabular}
+\caption{Maximum likelihood parameters estimates from model 2.}
+\label{tab:BestParameterEstimates}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[ht]
+\begin{center}
+
+\begin{tabular}{c|cccccc}
+%  \toprule
+ \multicolumn{1}{c}{} & 1 & & \dots & & & $p$ \\
+\cmidrule(r){2-7}
+ 1      & \dots   & \dots & \dots & 3     & 2       & 1      \\
+        & \dots   & \dots & \dots & \dots & 3       & 2      \\
+\vdots  & \dots   & \dots & \dots & \dots & 4       & 3      \\
+        & \dots   & \dots & $k$   & \dots & \dots   & \dots  \\
+        & \dots   & \dots & \dots & \dots & \dots   & \dots  \\
+$n$     & $n+p-1$ & \dots & \dots & \dots & \dots   & \dots  \\
+\end{tabular}
+
+\caption{Convention used to associate each element of the catch at age matrix ($\bm{C}_{i,j}$) with particular cohort referred to as with the number given in this table.}
+\label{Tab:Cohorts}
+
+
+\end{center}
+\end{table}
+\efloatseparator
+ 

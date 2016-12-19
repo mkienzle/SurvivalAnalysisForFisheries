@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+# Add data and C++ code to the repository
+cp ~/mystuff/Programs/C++/DelayDifference/WeeklyDD/FitWeeklyDelayDifference.cxx anc/.
+cp ~/mystuff/Programs/C++/DelayDifference/WeeklyDD/FixPar.h anc/.
+cp ~/mystuff/Programs/C++/DelayDifference/WeeklyDD/LogLikelihoodFunction.cxx anc/.
+cp ~/mystuff/Programs/C++/DelayDifference/WeeklyDD/LogLikelihoodFunction.h anc/.
+cp ~/mystuff/Programs/C++/DelayDifference/WeeklyDD/vonMisesRecDist.cxx anc/.
+cp ~/mystuff/Programs/C++/DelayDifference/WeeklyDD/WeeklyDelayDifference.cxx anc/.
+cp ~/mystuff/Programs/C++/DelayDifference/WeeklyDD/WeeklyDelayDifference.h anc/.
+cp ~/mystuff/Work/DEEDI/Moreton\ Bay\ Prawn\ Trawl\ fishery/Analysis/Scripts/DelayDifferenceModel/1989-2010/Weekly/model7/Data/TigerWeeklyData1989-2010 anc/.
+
+# Create an archive
+tar -cvf KienzleDDMB24Arxiv.tar Kienzle-DDMB-4Arxiv.tex Kienzle-DDMB.bbl MoretonBaytrawlfisheryandtigerprawndistribution3.ps TotalCatchAndVessels.ps LandingsSpeciesCompositionByYear.ps PercentageOfFemaleBiomassMature.ps HillEmergenceDuration.ps SSTinBrisbane.ps HillIndexOfAvailability.ps EffectOfTargetingTigerOnCatchEffortRelationship.ps TigerCatchEffortCPUE4Paper.ps VariationOfTigerRelativeFishingPowerModel6OnlyWithSignificantVariable.ps StandardizedEffort.ps ModelOverlayedObs.ps DDresiduals.ps SeasonalDistributionOfRecruitment.ps RecruitmentTS.ps RickerSRR-SingleCurve.ps ProjectedCatchvsEffort.ps OverfishedOverfishingPlotBW.ps anc/*
+
+#Kienzle-AddressingReviewersComments.bbl VariationOfTigerRelativeFishingPowerModel6Comparing2DifferentFormulas.ps TigerDensityEstimatesCPUEmodel6Comparing2DifferentFormulas.ps ComparingFitUsingDifferenceAgeAtRec.ps CompareEffectOfAgeAtRecOnRecruitmentTS.ps CompareEffectOfAgeAtRecOnSRR.ps anc/*
+
+#TotalCatchAndVessels.ps TigerCatchEffortCPUE4Paper.ps HillEmergenceDuration.ps SSTinBrisbane.ps HillIndexOfAvailability.ps VariationOfTigerRelativeFishingPowerModel6.ps TigerDensityEstimatesCPUEmodel6.ps ModelOverlayedObs.ps RecruitmentTS.ps RickerFit.ps RickerFit2.ps OverfishedOverfishingPlotBW.ps Kienzle-FRsubmission.tex Highlights.txt

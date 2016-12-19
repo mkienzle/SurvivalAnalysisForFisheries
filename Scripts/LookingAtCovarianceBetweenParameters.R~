@@ -1,0 +1,5 @@
+# CREATED  2 Sept 2015
+# MODIFIED 2 Sept 2015
+
+# Using the results of simulations
+load(file = "../Results/Simulations/Archive/all.simulations-Tue-Nov-25-10:28:46-2014.R")
