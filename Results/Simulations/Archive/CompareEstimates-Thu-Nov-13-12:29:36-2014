@@ -1,3 +1,0 @@
-"","max.age","nb.of.cohort","n.sample.per.year","random.seed","sampling.type","Optimization.status","Nat.Mort.sim","Nat.Mort.est","Nat.Mort.error"
-"2",8,16,1000,86133.9557517082,"Strategy 2","successful",0.663012270629406,0.306790515738541,0.130515480141173
-"3",8,16,1000,86133.9557517082,"Strategy 2 with correction","successful",0.663012270629406,0.701124425523795,0.139246015949336
