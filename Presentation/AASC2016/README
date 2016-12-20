@@ -1,2 +1,0 @@
-# resize poster from A0 to A4
-pdfjam --outfile out.pdf --paper a4aper Kienzle-poster.pdf
