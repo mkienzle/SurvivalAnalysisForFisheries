@@ -1,4 +1,4 @@
 
 # Install in R
-library("devtools")
+library(devtools)
 install_github("mkienzle/SurvivalAnalysisForFisheries/Scripts/SAFR")
