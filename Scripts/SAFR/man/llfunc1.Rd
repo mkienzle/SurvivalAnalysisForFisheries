@@ -47,12 +47,12 @@ total.death <- N0 * (exp(-(M+F) * age) - exp(-(M+F) * (age+1)))
 # And the fraction dying from fishing 
 catch <- F/(M+F) * total.death
 
-# Estimate Z
+# Estimate Z using ages from all fish caught
 result <- optim(par = c(0.1), fn = llfunc1, catch = catch, method = c("L-BFGS-B"),
       lower = c(1e-2), upper = c(3), hessian = TRUE)
 print(paste("Estimated Z is", round(result$par,3), "+-", round(sqrt(diag(solve(result$hessian))),3)))
 
-### Estimate of Z using a plus group
+### Estimate of Z using ages of all fish caught and creating a plus group
 ap <- ifelse( (0.0001 * sum(catch)) < catch[11], 11, min(which(catch < (0.0001 * sum(catch)) )))
 catch1 <- catch[1:ap]; catch1[ap] <- sum(catch[ap:11]) # create the +group
 
@@ -65,12 +65,22 @@ result1 <- optim(par = c(0.1), fn = llfunc1, catch = catch1, plus.group = TRUE, 
 print(paste("Estimated Z is", round(result1$par,3), "+-", round(sqrt(diag(solve(result1$hessian))),3)))
 })
 
-print("# An estimate of recruitment")
-# According to Dupont (1983) and Chiang (1968) cohort abundance at t=0 can be estimated by the ratio of total number of individual dying to total probability of dying
+### Estimate of Z using a sample of catch
+
+# take a sample of catch
+age.freq <- rep(seq(1, length(catch)), catch)
+catch.sample <- as.vector(table(sample(age.freq, size = 0.1 * sum(catch))))
+
+result.0 <- optim(par = 0.1, fn = llfunc1, catch = catch.sample, method = "L-BFGS-B", lower = 1e-2, upper = 3, hessian = TRUE)
+print(paste("Estimated Z from a sample of catch is", round(result.0$par,3), "+-", round(sqrt(diag(solve(result.0$hessian))),3)))
+
+### Estimating recruitment
+## According to Dupont (1983) and Chiang (1968) cohort abundance at t=0 can be estimated by the ratio of total number of individual dying to total probability of dying
 
 #rec.est <- catch / ((result$par[1] - M)/result$par[1]) / (exp(-result$par[1] * #age) - exp(-result$par[1] * (age + 1)) )
 #print(mean(rec.est))
 rec.est <- sum(catch) / ((result$par[1] - M)/result$par[1]) / sum( (exp(-result$par[1] * age) - exp(-result$par[1] * (age + 1)) ))
+print("# An estimate of recruitment")
 print(rec.est)
 print(paste("Compared to N0=", round(N0,3)))
 }
