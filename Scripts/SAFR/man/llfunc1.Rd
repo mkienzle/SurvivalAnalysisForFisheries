@@ -26,22 +26,23 @@
   Chiang (1968) - Introduction to stochastic processes in biostatistics, John Wiley & Sons
 }
 \examples{
-# Suppose age varies between 0 and 10
-age <- seq(0,10)
+# Suppose age varies between 0 and max.age
+max.age = 15
+age <- seq(0, max.age - 1) # lower boundary of the age-groups interval of 1 year
 
 # Suppose you have a M=0.105, F and N0 are arbitrary (randomly generated)
 M <- 0.105
-F <- runif(1, min = 0.1, max = 3)
+F <- runif(1, min = 0.1, max = 0.6)
 print(paste("Simulated Z is", round(M+F,3)))
 
 # Generate a random recruitment
-N0 <- runif(1, min = 1e3, max = 1e4)
+N0 <- runif(1, min = 1e5, max = 1e6)
 print(paste("Simulated recruitment", round(N0)))
 
 # Calculate number at age using a simple exponential model ( see Quinn and Deriso, 1999)
 nb.at.age <- cbind(age, N0 * exp(-(M+ F)) ^ age)
 
-# Calculate the total number of individual dying at age
+# Calculate the total number of individual dying in each age-groups
 total.death <- N0 * (exp(-(M+F) * age) - exp(-(M+F) * (age+1)))
 
 # And the fraction dying from fishing 
@@ -52,27 +53,28 @@ result <- optim(par = c(0.1), fn = llfunc1, catch = catch, method = c("L-BFGS-B"
       lower = c(1e-2), upper = c(3), hessian = TRUE)
 print(paste("Estimated Z is", round(result$par,3), "+-", round(sqrt(diag(solve(result$hessian))),3)))
 
-### Estimate of Z using ages of all fish caught and creating a plus group
-ap <- ifelse( (0.0001 * sum(catch)) < catch[11], 11, min(which(catch < (0.0001 * sum(catch)) )))
-catch1 <- catch[1:ap]; catch1[ap] <- sum(catch[ap:11]) # create the +group
-
-# if the number of observation is large enough so that there is no need to create a +group
-# then do not use the +group option
-ifelse( length(catch) == length(catch1), print("+group option not used"),
-{ 
-result1 <- optim(par = c(0.1), fn = llfunc1, catch = catch1, plus.group = TRUE, method = c("L-BFGS-B"),
-      lower = c(1e-2), upper = c(3), hessian = TRUE)
-print(paste("Estimated Z is", round(result1$par,3), "+-", round(sqrt(diag(solve(result1$hessian))),3)))
-})
 
 ### Estimate of Z using a sample of catch
 
 # take a sample of catch
 age.freq <- rep(seq(1, length(catch)), catch)
-catch.sample <- as.vector(table(sample(age.freq, size = 0.1 * sum(catch))))
+catch.sample <- hist(sample(age.freq, size = 0.001 * sum(catch)), breaks = seq(0, max.age))$counts
 
 result.0 <- optim(par = 0.1, fn = llfunc1, catch = catch.sample, method = "L-BFGS-B", lower = 1e-2, upper = 3, hessian = TRUE)
 print(paste("Estimated Z from a sample of catch is", round(result.0$par,3), "+-", round(sqrt(diag(solve(result.0$hessian))),3)))
+
+
+## create a +group if there are many zeroes
+if(length(which(catch.sample == 0)) > 0){
+                             catch.sample.pg = catch.sample[seq(1, which(catch.sample == 0)[1] - 1)]
+			     catch.sample.pg[which(catch.sample == 0)[1] - 1] = sum(catch.sample[seq(which(catch.sample == 0)[1]-1, length(catch.sample))])
+
+
+			     ### Estimate of Z using a sample fish caught and creating a plus group
+			     result1 <- optim(par = c(0.1), fn = llfunc1, catch = catch.sample.pg, plus.group = TRUE, method = c("L-BFGS-B"),
+      			     lower = c(1e-2), upper = c(3), hessian = TRUE)
+			     print(paste("Estimated Z is", round(result1$par,3), "+-", round(sqrt(diag(solve(result1$hessian))),3)))
+}
 
 ### Estimating recruitment
 ## According to Dupont (1983) and Chiang (1968) cohort abundance at t=0 can be estimated by the ratio of total number of individual dying to total probability of dying
