@@ -36,7 +36,7 @@ F <- runif(1, min = 0.1, max = 0.6)
 print(paste("Simulated Z is", round(M+F,3)))
 
 # Generate a random recruitment
-N0 <- runif(1, min = 1e5, max = 1e6)
+N0 <- runif(1, min = 1e4, max = 1e5)
 print(paste("Simulated recruitment", round(N0)))
 
 # Calculate number at age using a simple exponential model ( see Quinn and Deriso, 1999)
@@ -58,7 +58,7 @@ print(paste("Estimated Z is", round(result$par,3), "+-", round(sqrt(diag(solve(r
 
 # take a sample of catch
 age.freq <- rep(seq(1, length(catch)), catch)
-catch.sample <- hist(sample(age.freq, size = 0.001 * sum(catch)), breaks = seq(0, max.age))$counts
+catch.sample <- hist(sample(age.freq, size = 0.003 * sum(catch)), breaks = seq(0, max.age))$counts
 
 result.0 <- optim(par = 0.1, fn = llfunc1, catch = catch.sample, method = "L-BFGS-B", lower = 1e-2, upper = 3, hessian = TRUE)
 print(paste("Estimated Z from a sample of catch is", round(result.0$par,3), "+-", round(sqrt(diag(solve(result.0$hessian))),3)))
