@@ -57,8 +57,9 @@ print(paste("Estimated Z is", round(result$par,3), "+-", round(sqrt(diag(solve(r
 ### Estimate of Z using a sample of catch
 
 # take a sample of catch
+fraction.sampled <- 3/1000
 age.freq <- rep(seq(1, length(catch)), catch)
-catch.sample <- hist(sample(age.freq, size = 0.003 * sum(catch)), breaks = seq(0, max.age))$counts
+catch.sample <- hist(sample(age.freq, size = fraction.sampled * sum(catch)), breaks = seq(0, max.age))$counts
 
 result.0 <- optim(par = 0.1, fn = llfunc1, catch = catch.sample, method = "L-BFGS-B", lower = 1e-2, upper = 3, hessian = TRUE)
 print(paste("Estimated Z from a sample of catch is", round(result.0$par,3), "+-", round(sqrt(diag(solve(result.0$hessian))),3)))
@@ -85,5 +86,15 @@ rec.est <- sum(catch) / ((result$par[1] - M)/result$par[1]) / sum( (exp(-result$
 print("# An estimate of recruitment")
 print(rec.est)
 print(paste("Compared to N0=", round(N0,3)))
+
+print("### SUMMARY ###")
+
+print(paste("Simulated Z is", round(M+F,3)))
+print(paste("Simulated recruitment", round(N0)))
+
+print("")
+print(paste("Estimated Z using age from all fish in the catch", round(result$par,3), "+-", round(sqrt(diag(solve(result$hessian))),3)))
+print(paste("Estimated Z from sampling ", round(fraction.sampled * 100, 2), "\% of the catch is", round(result.0$par,3), "+-", round(sqrt(diag(solve(result.0$hessian))),3)))
+print(paste("Estimated Z from sampling ", round(fraction.sampled * 100, 2), "\% of the catch and using a +group is", round(result1$par,3), "+-", round(sqrt(diag(solve(result1$hessian))),3)))
 }
 \keyword{misc}
